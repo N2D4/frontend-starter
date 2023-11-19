@@ -1,0 +1,77 @@
+import Alert from '@mui/joy/alert';
+
+# Using MDX
+
+Support for MDX is built-in. You can use it to build React components and pages with Markdown.
+
+## Basics
+*Italic*, **bold**, ~strikethrough~.
+
+## Links
+Custom link: [Example](https://www.example.com)
+
+Autolink: www.example.com, https://example.com, and contact@example.com.
+
+## Images
+![Favicon image](/favicon.ico)
+
+## Custom components
+<Alert color="success">This is a Joy UI alert!</Alert>
+
+## Quotes
+> This is a blockquote.
+
+## Table
+
+| a | b  |  c |  d  |
+| - | :- | -: | :-: |
+| This | is | a |  table  |
+| demonstrating | various | alignment | options. |
+
+## Lists
+
+- You can make
+- normal lists
+    - And indent them like this
+
+1. Or you can make
+2. numbered lists
+    1. And indent them like this
+
+- [x] Or you can make
+- [ ] task lists
+    - [ ] Again, indented like this
+- [ ] Update website www.example.com
+
+## Rules
+
+Horizontal rules
+
+---
+
+## Math
+
+You can write math like $$\sqrt{a^2 + b^2}$$
+
+Or you can do $123$
+
+## Code
+Use single backticks for `inline code`.
+
+```
+Normal code blocks
+```
+
+```tsx
+const code = 'syntax highlighting code blocks';
+```
+
+```#tsx
+const code = 'code block with line numbers';
+```
+
+## Footnote
+
+A note[^1]
+
+[^1]: Big note.
