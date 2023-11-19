@@ -9,7 +9,6 @@ import type { MDXComponents } from 'mdx/types';
 // components from other libraries, and more.
  
 
-// TODO use Next.js Image component
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
