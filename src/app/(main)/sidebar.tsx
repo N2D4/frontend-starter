@@ -1,15 +1,21 @@
 import { Icon } from "@/components/icon";
+import { Logo } from "@/components/logo";
 import { SheetProps, Sheet, List, listItemButtonClasses, ListItem, Typography, ListItemButton, IconButton, ListSubheader, Stack, Divider, Box } from "@mui/joy";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-export function Sidebar(props: SheetProps & { onCloseSidebar?: () => void }) {
+export function Sidebar(props: SheetProps & { onCloseSidebar?: () => void, showLogo?: boolean }) {
   const { onCloseSidebar = () => {}, ...sheetProps } = props;
 
   return (
     <Sheet
       {...sheetProps}
     >
+      {props.showLogo && (
+        <Box padding={2}>
+          <Logo full height={48} />
+        </Box>
+      )}
       <List
         size="sm"
         sx={{ width: '100%' }}

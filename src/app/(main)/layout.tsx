@@ -19,6 +19,9 @@ export default function Layout(props: { children: React.ReactNode }) {
         <Header
           isCompactMediaQuery={isCompactMediaQuery}
           onShowSidebar={() => setIsSidebarOpen(true)}
+          sx={{
+            height: `${headerHeight}px`,
+          }}
         />
         <Stack flexGrow={1} direction="row" alignItems="flex-start">
           <Sidebar
@@ -51,6 +54,7 @@ export default function Layout(props: { children: React.ReactNode }) {
       >
         <Sidebar
           onCloseSidebar={() => setIsSidebarOpen(false)}
+          showLogo
         />
       </Drawer>
     </>

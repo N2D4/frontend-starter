@@ -1,12 +1,16 @@
 import Image, { ImageProps } from "next/image";
-import favicon from "../../public/logo.png";
+import logo from "../../public/logo.png";
+import logoFull from "../../public/logo-full.png";
+import { Link } from "@mui/joy";
 
-export function Logo(props: ImageProps | Omit<ImageProps, "src" | "alt">) {
+export function Logo(props: (ImageProps | Omit<ImageProps, "src" | "alt">) & { full?: boolean }) {
   return (
-    <Image
-      src={favicon}
-      alt="Logo"
-      {...props}
-    />
+    <Link href="/">
+      <Image
+        src={props.full ? logoFull : logo}
+        alt="Logo"
+        {...props}
+      />
+    </Link>
   );
 }

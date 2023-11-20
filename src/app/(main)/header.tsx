@@ -2,15 +2,16 @@
 
 import { Icon } from "@/components/icon";
 import { Logo } from "@/components/logo";
-import { Sheet, Stack, IconButton, Box } from "@mui/joy";
+import { Sheet, Stack, IconButton, Box, SheetProps } from "@mui/joy";
 import { useRouter } from "next/navigation";
 
-export function Header(props: { isCompactMediaQuery: string, onShowSidebar: () => void }) {
+export function Header(props: SheetProps & { isCompactMediaQuery: string, onShowSidebar: () => void }) {
+  const { isCompactMediaQuery, onShowSidebar, ...sheetProps } = props;
   return (
     <Sheet
       variant="outlined"
+      {...sheetProps}
       sx={{
-        paddingY: 1,
         paddingX: 2,
         position: 'sticky',
         top: 0,
@@ -18,29 +19,30 @@ export function Header(props: { isCompactMediaQuery: string, onShowSidebar: () =
         borderTop: 'none',
         borderLeft: 'none',
         borderRight: 'none',
+        display: 'flex',
+        alignItems: 'stretch',
+        ...sheetProps.sx ?? {},
       }}
     >
       <Stack
         direction="row"
         alignItems="center"
+        flexGrow={1}
         gap={2}
       >
         <IconButton
           variant="outlined"
-          onClick={props.onShowSidebar}
+          onClick={onShowSidebar}
           sx={{
             display: 'none',
-            [props.isCompactMediaQuery]: {
+            [isCompactMediaQuery]: {
               display: 'flex',
             },
           }}
         >
           <Icon icon="menu" />
         </IconButton>
-        <Logo
-          height={48}
-        />
-        <RouterBreadcrumbs />
+        <Logo height={40} />
         <Box flexGrow={1} />
         <IconButton
           variant="outlined"
@@ -49,13 +51,5 @@ export function Header(props: { isCompactMediaQuery: string, onShowSidebar: () =
         </IconButton>
       </Stack>
     </Sheet>
-  );
-}
-
-function RouterBreadcrumbs() {
-  const router = useRouter();
-
-  return (
-    "TODO"
   );
 }
