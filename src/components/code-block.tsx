@@ -7,24 +7,22 @@ export async function CodeBlock(props: React.ComponentProps<typeof Box> & { code
 
   let additionalCodeProps: React.ComponentProps<typeof Code> = {};
   const child: any = mdxPreProps?.children;
-  if (child?.type === "code") {
-    const classes: string[] = child.props?.className?.split(' ') ?? [];
-    let language = classes.find((c: string) => c.startsWith('language-'))?.substring(9);
-    if (language?.startsWith('#')) {
-      language = language.substring(1);
-      additionalCodeProps.lineNumbers = true;
-    }
-    if (language) {
-      additionalCodeProps.lang = language;
-    }
-    additionalCodeProps.code = `${child.props?.children}`.replace(/\n$/, '');
+  const codeNodeProps = typeof child === "string" ? mdxPreProps : child?.props;
+  const classes: string[] = codeNodeProps?.className?.split(' ') ?? [];
+  let language = classes.find((c: string) => c.startsWith('language-'))?.substring(9);
+  if (language?.startsWith('#')) {
+    language = language.substring(1);
+    additionalCodeProps.lineNumbers = true;
   }
+  if (language) {
+    additionalCodeProps.lang = language;
+  }
+  additionalCodeProps.code = `${codeNodeProps?.children}`.replace(/\n$/, '');
 
   return (
     <Box {...boxProps} sx={{
       fontSize: '13px',
       position: 'relative',
-      userSelect: 'text',
       "& code": {
         WebkitFontSmoothing: 'subpixel-antialiased',
         fontFamily: 'Menlo, Consolas, "Droid Sans Mono", monospace',

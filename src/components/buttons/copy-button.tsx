@@ -2,7 +2,6 @@
 
 import { Icon } from "../icon";
 import { AsyncIconButton } from "./async-icon-button";
-import { wait } from "@/utils/promises";
 import { useSnackbar } from "@/hooks/use-snackbar";
 
 type PropsWithoutBase = {

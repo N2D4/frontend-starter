@@ -1,6 +1,6 @@
 import { CodeBlock } from '@/components/code-block';
+import { InlineCode } from '@/components/inline-code';
 import { Box, Checkbox, Divider, Grid, Link, Stack, Table } from '@mui/joy';
-import { Code } from 'bright';
 import type { MDXComponents } from 'mdx/types';
 
 // This file allows you to provide custom React components
@@ -83,6 +83,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     pre: (props) => (
       <CodeBlock mdxPreProps={props} />
+    ),
+    code: (props) => (
+      <InlineCode {...props as any} />
     ),
     ...components,
   };

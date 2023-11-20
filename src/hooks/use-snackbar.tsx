@@ -37,8 +37,6 @@ export function SnackbarProvider(props: { children: React.ReactNode }) {
     }, 1000);
   }, []);
 
-  console.log(snackbars);
-
   return (
     <SnackbarContext.Provider value={value}>
       {props.children}
