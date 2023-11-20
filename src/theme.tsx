@@ -1,6 +1,6 @@
 "use client";
 
-import { CssBaseline, CssVarsProvider, ScopedCssBaseline, extendTheme } from "@mui/joy";
+import { CssBaseline, CssVarsProvider, ScopedCssBaseline, extendTheme, getInitColorSchemeScript } from "@mui/joy";
 import NextLink from "next/link";
 
 export default function ThemeProvider(props: { children: React.ReactNode }) {
@@ -24,8 +24,9 @@ export default function ThemeProvider(props: { children: React.ReactNode }) {
   });
 
   return (
-    <CssVarsProvider theme={theme}>
+    <CssVarsProvider theme={theme} defaultMode="system" >
       <CssBaseline />
+      {getInitColorSchemeScript({ defaultMode: "system" })}
       {props.children}
     </CssVarsProvider>
   );

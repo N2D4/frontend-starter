@@ -30,7 +30,7 @@ export function Sidebar(props: SheetProps & { onCloseSidebar?: () => void, showL
           Using MDX
         </NavigationItem>
         <Folder title="Reasoning">
-          <NavigationItem href="/tools/joy-ui" onCloseSidebar={onCloseSidebar}>
+          <NavigationItem href="/reasoning/joy-ui" onCloseSidebar={onCloseSidebar}>
             Why Joy UI?
           </NavigationItem>
         </Folder>

@@ -1,6 +1,6 @@
 import { Box } from "@mui/joy";
 import { Code } from "bright";
-import { CopyButton } from "./copy-button";
+import { CopyButton } from "./buttons/copy-button";
 
 export async function CodeBlock(props: React.ComponentProps<typeof Box> & { codeProps?: React.ComponentProps<typeof Code>, mdxPreProps?: React.ComponentProps<'pre'> }) {
   const {codeProps, mdxPreProps, ...boxProps} = props;
@@ -24,11 +24,15 @@ export async function CodeBlock(props: React.ComponentProps<typeof Box> & { code
     <Box {...boxProps} sx={{
       fontSize: '13px',
       position: 'relative',
+      userSelect: 'text',
       "& code": {
         WebkitFontSmoothing: 'subpixel-antialiased',
         fontFamily: 'Menlo, Consolas, "Droid Sans Mono", monospace',
         letterSpacing: 0,
-      }
+      },
+      "& span[data-bright-ln]": {
+        userSelect: 'none',
+      },
     }}>
       <Code
         {...additionalCodeProps}
@@ -36,7 +40,7 @@ export async function CodeBlock(props: React.ComponentProps<typeof Box> & { code
         theme={{
           dark: "dracula",
           light: "light-plus",
-          lightSelector: ':not([data-joy-color-scheme="dark"])',
+          lightSelector: '[data-joy-color-scheme="light"]',
         }}
         style={{
           border: '1px solid var(--joy-palette-neutral-outlinedBorder)',

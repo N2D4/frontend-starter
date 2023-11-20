@@ -7,7 +7,6 @@ export default function Home() {
 
       todo:
       - blockquotes in mdx
-      - darkmode
       - write docs
       - github actions workflows
       - next images in mdx

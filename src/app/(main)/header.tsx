@@ -2,10 +2,11 @@
 
 import { Icon } from "@/components/icon";
 import { Logo } from "@/components/logo";
-import { Sheet, Stack, IconButton, Box, SheetProps } from "@mui/joy";
-import { useRouter } from "next/navigation";
+import { Sheet, Stack, IconButton, Box, SheetProps, useColorScheme, colors } from "@mui/joy";
 
 export function Header(props: SheetProps & { isCompactMediaQuery: string, onShowSidebar: () => void }) {
+  const colorScheme = useColorScheme();
+
   const { isCompactMediaQuery, onShowSidebar, ...sheetProps } = props;
   return (
     <Sheet
@@ -46,6 +47,7 @@ export function Header(props: SheetProps & { isCompactMediaQuery: string, onShow
         <Box flexGrow={1} />
         <IconButton
           variant="outlined"
+          onClick={() => colorScheme.setMode(colorScheme.mode === 'light' ? 'dark' : 'light')}
         >
           <Icon icon="contrast" />
         </IconButton>
