@@ -25,7 +25,7 @@ export async function CodeBlock(props: React.ComponentProps<typeof Box> & { code
       position: 'relative',
       "& code": {
         WebkitFontSmoothing: 'subpixel-antialiased',
-        fontFamily: 'Menlo, Consolas, "Droid Sans Mono", monospace',
+        fontFamily: 'var(--joy-fontFamily-code)',
         letterSpacing: 0,
       },
       "& span[data-bright-ln]": {

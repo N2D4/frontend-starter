@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import ThemeProvider from '@/theme';
 import { SnackbarProvider } from '@/hooks/use-snackbar';
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
+// BEGIN Used for the font in src/theme.tsx
+import 'geist/font/sans';
+import "geist/font/mono";
+// END Used for the font in src/theme.tsx
 
 export const metadata: Metadata = {
   title: 'N2D4\'s App',
@@ -27,7 +26,17 @@ export default function RootLayout({
         {/* eslint-disable-next-line @next/next/google-font-display, @next/next/no-page-custom-font */}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
       </head>
-      <body className={inter.className}>
+      <body
+        style={{
+          /**
+           * NOTE: The font family is configured in the Joy UI theme config, at src/theme.tsx.
+           * 
+           * The font here is used as a fallback, and is intentionally egregious to make it obvious
+           * when you forgot to wrap your text in a <Typography /> or <Paragraph /> component.
+           */
+          fontFamily: 'Brush Script MT',
+        }}
+      >
         <ThemeProvider>
           <SnackbarProvider>
             {children}

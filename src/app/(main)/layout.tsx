@@ -15,15 +15,27 @@ export default function Layout(props: { children: React.ReactNode }) {
 
   return (
     <>
-      <Stack>
+      <Stack 
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          overflowY: 'auto',
+          scrollPaddingTop: `${headerHeight}px`,
+        }}
+      >
         <Header
           isCompactMediaQuery={isCompactMediaQuery}
           onShowSidebar={() => setIsSidebarOpen(true)}
           sx={{
             height: `${headerHeight}px`,
+            flexShrink: 0,
           }}
         />
-        <Stack flexGrow={1} direction="row" alignItems="flex-start">
+        <Stack
+          flexGrow={1}
+          direction="row"
+          alignItems="flex-start"
+        >
           <Sidebar
             variant="outlined"
             sx={{
@@ -43,7 +55,7 @@ export default function Layout(props: { children: React.ReactNode }) {
               },
             }}
           />
-          <Box component="main" paddingX={2}>
+          <Box component="main" paddingX={3}>
             {props.children}
           </Box>
         </Stack>

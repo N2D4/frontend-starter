@@ -1,6 +1,8 @@
 import { CodeBlock } from '@/components/code-block';
 import { InlineCode } from '@/components/inline-code';
-import { Box, Checkbox, Divider, Grid, Link, Stack, Table } from '@mui/joy';
+import { Paragraph } from '@/components/paragraph';
+import { QuoteBlock } from '@/components/quote-block';
+import { Box, Checkbox, Divider, Grid, Link, Stack, Table, Typography } from '@mui/joy';
 import type { MDXComponents } from 'mdx/types';
 
 // This file allows you to provide custom React components
@@ -13,13 +15,31 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
     h1: (props) => (
-      <h1 style={{ color: 'red' }} {...props} />
+      <Paragraph h1 {...props as {}} />
+    ),
+    h2: (props) => (
+      <Paragraph h2 {...props as {}} />
+    ),
+    h3: (props) => (
+      <Paragraph h3 {...props as {}} />
+    ),
+    h4: (props) => (
+      <Paragraph h4 {...props as {}} />
+    ),
+    h5: (props) => (
+      <Paragraph h4 component="h5" {...props as {}} />
+    ),
+    h6: (props) => (
+      <Paragraph h4 component="h6" {...props as {}} />
+    ),
+    p: (props) => (
+      <Paragraph body {...props as {}} />
     ),
     a: (props) => (
-      <Link {...props as any} />
+      <Link {...props as {}} />
     ),
     table: (props) => (
-      <Table {...props as any} sx={{
+      <Table {...props as {}} sx={{
         tableLayout: 'auto',
         width: 'auto',
         '& th': {
@@ -40,7 +60,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     li: (props) => (
-      <li {...props}>
+      <Typography display="list-item" component="li" {...props as {}}>
         {props.className?.includes('task-list-item') ? (
           <Box
             display="grid"
@@ -76,16 +96,24 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         ) : (
           props.children
         )}
-      </li>
+      </Typography>
     ),
     hr: (props) => (
-      <Divider {...props as any} />
+      <Divider
+        sx={{
+          marginY: 2,
+        }}
+        {...props as {}}
+      />
+    ),
+    blockquote: (props) => (
+      <QuoteBlock {...props as {}} />
     ),
     pre: (props) => (
       <CodeBlock mdxPreProps={props} />
     ),
     code: (props) => (
-      <InlineCode {...props as any} />
+      <InlineCode {...props as {}} />
     ),
     ...components,
   };
