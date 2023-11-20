@@ -26,9 +26,7 @@ export function CopyButton(props: Props) {
         }
       }}
     >
-      <Icon>
-        content_copy
-      </Icon>
+      <Icon icon="content_copy" />
     </AsyncIconButton>
   );
 }

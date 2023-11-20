@@ -66,7 +66,7 @@ export function useSnackbar() {
     showSuccess: (children: React.ReactNode, props?: SnackbarOptions) => snackbarContextValue.show({
       color: 'success',
       variant: 'soft',
-      startDecorator: <Icon fill weight={700}>check_circle</Icon>,
+      startDecorator: <Icon fill weight={700} icon="check_circle" />,
       children,
       autoHideDuration: 5000,
       ...props,
@@ -74,7 +74,7 @@ export function useSnackbar() {
     showError: (children: React.ReactNode, props?: SnackbarOptions) => snackbarContextValue.show({
       color: 'danger',
       variant: 'soft',
-      startDecorator: <Icon fill weight={700}>error</Icon>,
+      startDecorator: <Icon fill weight={700} icon="error" />,
       children,
       autoHideDuration: 5000,
       ...props,

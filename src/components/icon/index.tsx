@@ -1,15 +1,16 @@
 import { Box, BoxProps } from "@mui/joy";
+import type { MaterialSymbolName } from "./material-symbol-names";
 
 type PropsWithoutBase = {
-  children: string,
+  icon: MaterialSymbolName,
   fill?: boolean,
   weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700,
   grade?: -25 | 0 | 200,
   opticalSize?: number,
 };
 
-export function Icon(props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithoutBase>) {
-  const { fill, weight, grade, opticalSize, ...boxProps } = props;
+export function Icon(props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithoutBase | "children">) {
+  const { icon, fill, weight, grade, opticalSize, ...boxProps } = props;
   return (
     <Box
       color="var(--Icon-color) !important"
@@ -23,6 +24,8 @@ export function Icon(props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithout
         fontVariationSettings: `'FILL' ${fill ? 1 : 0}, 'wght' ${weight ?? 400}, 'GRAD' ${grade ?? 0}, 'opsz' ${opticalSize ?? 20}`,
         ...boxProps.sx ?? {},
       }}
-    />
+    >
+      {icon}
+    </Box>
   );
 }

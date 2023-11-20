@@ -1,6 +1,5 @@
-import { Box, Card, CardOverflow, IconButton, useTheme } from "@mui/joy";
+import { Box } from "@mui/joy";
 import { Code } from "bright";
-import { Icon } from "./icon";
 import { CopyButton } from "./copy-button";
 
 export async function CodeBlock(props: React.ComponentProps<typeof Box> & { codeProps?: React.ComponentProps<typeof Code>, mdxPreProps?: React.ComponentProps<'pre'> }) {

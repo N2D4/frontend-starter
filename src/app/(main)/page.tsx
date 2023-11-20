@@ -1,14 +1,11 @@
 import { Link } from '@mui/joy';
-import Image from 'next/image';
 
 export default function Home() {
   return (
     <>
-      Main content
-      <Link href="/using-mdx">Using MDX</Link>
+      Main content<br />
 
       todo:
-      - layout/header/sidebar
       - blockquotes in mdx
       - darkmode
       - write docs

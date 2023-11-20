@@ -1,12 +1,59 @@
-import { MDXProvider } from "@mdx-js/react";
+"use client";
+
+import { Box, Drawer, ListSubheader, Sheet, SheetProps, Stack, Typography, listItemButtonClasses, useTheme } from "@mui/joy";
+import { useState } from "react";
+import { Header } from "./header";
+import { Sidebar } from "./sidebar";
+
+const headerHeight = 64;
 
 export default function Layout(props: { children: React.ReactNode }) {
+  const theme = useTheme();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const isCompactMediaQuery = theme.breakpoints.down("lg");
+
   return (
     <>
-      some header or so idk
-      <main>
-        {props.children}
-      </main>
+      <Stack>
+        <Header
+          isCompactMediaQuery={isCompactMediaQuery}
+          onShowSidebar={() => setIsSidebarOpen(true)}
+        />
+        <Stack flexGrow={1} direction="row" alignItems="flex-start">
+          <Sidebar
+            variant="outlined"
+            sx={{
+              position: 'sticky',
+              top: `${headerHeight}px`,
+              height: `calc(100vh - ${headerHeight}px)`,
+              overflowY: 'auto',
+              borderLeft: 'none',
+              borderTop: 'none',
+              borderBottom: 'none',
+              backgroundColor: 'transparent',
+              width: '280px',
+              flexShrink: 0,
+              display: 'block',
+              [isCompactMediaQuery]: {
+                display: 'none',
+              },
+            }}
+          />
+          <Box component="main" paddingX={2}>
+            {props.children}
+          </Box>
+        </Stack>
+      </Stack>
+      <Drawer
+        open={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      >
+        <Sidebar
+          onCloseSidebar={() => setIsSidebarOpen(false)}
+        />
+      </Drawer>
     </>
   );
 }
+
