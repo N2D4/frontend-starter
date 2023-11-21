@@ -12,7 +12,7 @@
     "todo": "( sh -c 'echo && echo Analyzing TODOs...' && npm run todo-sh >/dev/null ) || npm run todo-win",
     "todo-win": "echo \"Not running on Linux or macOS, performing simple TODO check.\" && git grep -n TODO\\ ASAP || echo \"No TODOs found, good job!\"",
     "todo-sh": "( ( git grep -n TODO\\ ASAP 1>&2 && npm run todo-sh-error-blocker ) || echo No imminent TODOs found, good job! 1>&2 )",
-    "todo-sh-error-blocker": "( echo && echo ========================================= && echo There are TODO\\ ASAPs in your code, please && echo review them with '`npm run todo`'. && echo && echo Press ENTER or wait 10s to continue. && echo ========================================= && echo && read -t 10 -s; exit 0 ) 1>&2"
+    "todo-sh-error-blocker": "( echo && echo ========================================= && echo There are TODO\\ ASAPs in your code, please && echo review them with '`npm run todo`'. && echo && echo Press ENTER or wait 10s to continue. && echo ========================================= && echo && read -t 10; exit 0 ) 1>&2"
   },
   "engines": {
     "npm": ">=10.0.0",

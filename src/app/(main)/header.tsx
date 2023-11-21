@@ -36,6 +36,7 @@ export function Header(props: SheetProps & {
         gap={2}
       >
         <IconButton
+          size="sm"
           variant="outlined"
           onClick={onShowSidebar}
           sx={{
@@ -47,9 +48,10 @@ export function Header(props: SheetProps & {
         >
           <Icon icon="menu" />
         </IconButton>
-        <Logo height={40} />
+        <Logo height={36} />
         <Box flexGrow={1} />
         <SiteSearch
+          size="sm"
           sx={{
             display: {
               xs: 'none',
@@ -65,6 +67,7 @@ export function Header(props: SheetProps & {
           }}
         />
         <IconButton
+          size="sm"
           variant="outlined"
           onClick={() => colorScheme.setMode(colorScheme.mode === 'light' ? 'dark' : 'light')}
         >

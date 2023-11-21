@@ -25,7 +25,7 @@ export function Sidebar(props: SheetProps & {
         <Box
           margin={1}
         >
-          <SiteSearch />
+          <SiteSearch size="sm" />
         </Box>
       )}
       <List

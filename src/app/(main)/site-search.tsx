@@ -20,7 +20,6 @@ export function SiteSearch(props: InputProps) {
       value={searchText}
       onChange={e => setSearchText(e.target.value)}
       placeholder="Search"
-      size="sm"
       startDecorator={<Icon icon="search" sx={{
         color: theme => theme.palette.primary[500],
       }} />}
