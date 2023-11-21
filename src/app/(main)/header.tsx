@@ -2,9 +2,13 @@
 
 import { Icon } from "@/components/icon";
 import { Logo } from "@/components/logo";
-import { Sheet, Stack, IconButton, Box, SheetProps, useColorScheme, colors } from "@mui/joy";
+import { Sheet, Stack, IconButton, Box, SheetProps, useColorScheme, colors, Input, Button } from "@mui/joy";
+import { SiteSearch } from "./site-search";
 
-export function Header(props: SheetProps & { isCompactMediaQuery: string, onShowSidebar: () => void }) {
+export function Header(props: SheetProps & {
+  isCompactMediaQuery: string,
+  onShowSidebar: () => void,
+}) {
   const colorScheme = useColorScheme();
 
   const { isCompactMediaQuery, onShowSidebar, ...sheetProps } = props;
@@ -45,6 +49,21 @@ export function Header(props: SheetProps & { isCompactMediaQuery: string, onShow
         </IconButton>
         <Logo height={40} />
         <Box flexGrow={1} />
+        <SiteSearch
+          sx={{
+            display: {
+              xs: 'none',
+              sm: 'flex',
+            },
+            minWidth: '100px',
+            width: '150px',
+            flexShrink: 1,
+            transition: 'width 0.1s ease',
+            '&:focus-within, &:active': {
+              width: '250px',
+            },
+          }}
+        />
         <IconButton
           variant="outlined"
           onClick={() => colorScheme.setMode(colorScheme.mode === 'light' ? 'dark' : 'light')}

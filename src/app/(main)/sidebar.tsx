@@ -3,17 +3,29 @@ import { Logo } from "@/components/logo";
 import { SheetProps, Sheet, List, listItemButtonClasses, ListItem, Typography, ListItemButton, IconButton, ListSubheader, Stack, Divider, Box } from "@mui/joy";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { SiteSearch } from "./site-search";
 
-export function Sidebar(props: SheetProps & { onCloseSidebar?: () => void, showLogo?: boolean }) {
-  const { onCloseSidebar = () => {}, showLogo, ...sheetProps } = props;
+export function Sidebar(props: SheetProps & {
+  onCloseSidebar?: () => void,
+  showLogo?: boolean,
+  showSearch?: boolean,
+}) {
+  const { onCloseSidebar = () => {}, showLogo, showSearch, ...sheetProps } = props;
 
   return (
     <Sheet
       {...sheetProps}
     >
       {showLogo && (
-        <Box padding={2}>
+        <Box margin={2}>
           <Logo full height={48} />
+        </Box>
+      )}
+      {showSearch && (
+        <Box
+          margin={1}
+        >
+          <SiteSearch />
         </Box>
       )}
       <List

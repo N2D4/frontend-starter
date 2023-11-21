@@ -66,6 +66,7 @@ export default function Layout(props: { children: React.ReactNode }) {
       >
         <Sidebar
           onCloseSidebar={() => setIsSidebarOpen(false)}
+          showSearch
           showLogo
         />
       </Drawer>
