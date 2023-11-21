@@ -1,4 +1,5 @@
 import { CodeBlock } from '@/components/code-block';
+import { Image } from '@/components/image';
 import { InlineCode } from '@/components/inline-code';
 import { Paragraph } from '@/components/paragraph';
 import { QuoteBlock } from '@/components/quote-block';
@@ -38,6 +39,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: (props) => (
       <Link {...props as {}} />
     ),
+    img: (props) => {
+      const { alt, ...imageProps } = props;
+      const regexResult = alt?.match(/(.*)\|([0-9]*)x([0-9]*)$/);
+      console.log({regexResult});
+      return (
+        <Image
+          alt={regexResult?.[1] ?? alt ?? ""}
+          width={regexResult?.[2] ? parseInt(regexResult[2]) : undefined}
+          height={regexResult?.[3] ? parseInt(regexResult[3]) : undefined}
+          disableStrictCLS
+          {...imageProps as { src: string }}
+        />
+      );
+    },
     table: (props) => (
       <Table {...props as {}} sx={{
         tableLayout: 'auto',
