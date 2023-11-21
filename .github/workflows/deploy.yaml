@@ -15,7 +15,7 @@ jobs:
   build-frontend:
     uses: ./.github/workflows/build.yaml
   deploy-to-branch:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs: build-frontend
     steps:
       - name: Download artifact
