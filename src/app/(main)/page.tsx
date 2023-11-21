@@ -7,9 +7,6 @@ export default function Home() {
 
       todo:
       - write docs
-      - github actions workflows
-      - next images in mdx
-      - github pages
       - updated getting started (maybe a scaffolding script)
     </>
   );

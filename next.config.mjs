@@ -11,7 +11,7 @@ const withMDX = createMDX({
   },
 });
 
-// TODO set to false if you don't want to export a static site
+// TODO ASAP: set to false if you don't want to export a static site
 // (frontend-starter exports to a static GitHub pages site, so this is true by default)
 const outputStaticSite = true;
  
@@ -19,7 +19,7 @@ const outputStaticSite = true;
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 
-  // TODO set to your own basePath (or, if you're not sure what it means, just remove the property)
+  // TODO ASAP: set to your own basePath (or, if you're not sure what it means, just remove the property)
   // (frontend-starter exports to a static GitHub pages site, so this is set to that basePath by default)
   basePath: outputStaticSite ? '/frontend-starter' : throwErr('Please set your basePath in next.config.mjs!'),
 
