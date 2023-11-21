@@ -1,0 +1,33 @@
+# TODO: Replace this workflow to deploy to wherever you want
+
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-frontend:
+    uses: ./.github/workflows/build.yaml
+
+  deploy-to-branch:
+    runs-on: ubuntu-18.04
+    needs: build-frontend
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: frontend-build
+          path: frontend-build
+      - name: Deploy to branch
+        run: |
+          cd frontend-build
+          git init
+          git config user.name "GitHub Actions"
+          git config user.email ""
+          git add .
+          git commit -m "Deploy to branch"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git push --force origin gh-pages
+

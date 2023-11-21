@@ -14,6 +14,9 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+
+  // TODO: set to `standalone`, unless you want to export a static site
+  output: 'export',
 };
 
 export default withMDX(nextConfig);
