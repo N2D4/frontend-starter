@@ -26,11 +26,11 @@ jobs:
       - name: Deploy to branch
         run: |
           cd frontend-build
-          git init
+          git init -b frontend-deployment
           git config user.name "GitHub Actions"
           git config user.email ""
           git add .
           git commit -m "Deploy to branch"
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git push --force origin frontend-deployment
+          git push --force origin
 
