@@ -17,6 +17,8 @@ jobs:
           node-version: "20"
       - name: Install dependencies
         run: npm ci
+      - name: Disable Next telemetry
+        run: npx next telemetry disable
       - name: Lint with ESLint
         run: npm run lint
       - name: Build with Next.js
