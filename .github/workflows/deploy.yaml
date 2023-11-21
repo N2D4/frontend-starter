@@ -17,6 +17,8 @@ jobs:
   deploy-to-branch:
     runs-on: ubuntu-20.04
     needs: build-frontend
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v2
