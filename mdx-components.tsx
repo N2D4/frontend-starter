@@ -3,7 +3,8 @@ import { Image } from '@/components/image';
 import { InlineCode } from '@/components/inline-code';
 import { Paragraph } from '@/components/paragraph';
 import { QuoteBlock } from '@/components/quote-block';
-import { Box, Checkbox, Divider, Grid, Link, Stack, Table, Typography } from '@mui/joy';
+import { SmartLink } from '@/components/smart-link';
+import { Box, Checkbox, Divider, Stack, Table, Typography } from '@mui/joy';
 import type { MDXComponents } from 'mdx/types';
 
 // This file allows you to provide custom React components
@@ -37,7 +38,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <Paragraph body {...props as {}} />
     ),
     a: (props) => (
-      <Link {...props as {}} />
+      <SmartLink {...props as {}} />
     ),
     img: (props) => {
       const { alt, ...imageProps } = props;
