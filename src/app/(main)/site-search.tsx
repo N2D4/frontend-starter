@@ -8,7 +8,11 @@ export function SiteSearch(props: InputProps) {
   const { ...inputProps } = props;
 
   const openSearch = useCallback(() => {
-    window.open(`https://www.google.com/search?q=${encodeURIComponent(`${searchText} site:${window.location.hostname}`)}`, '_blank');
+    const baseUrl = new URL(process.env.__NEXT_ROUTER_BASEPATH || "", window.location.origin);
+    // Let's strip away all information but the necessary (Google search doesn't support eg. port number)
+    const baseSite = `${baseUrl.hostname}${baseUrl.pathname}`;
+  
+    window.open(`https://www.google.com/search?q=${encodeURIComponent(`${searchText} site:${baseSite}`)}`, '_blank');
   }, [searchText]);
 
   return (
