@@ -10,13 +10,20 @@ const withMDX = createMDX({
     remarkPlugins: [remarkMath, remarkGfm],
   },
 });
+
+// TODO: set to false if you don't want to export a static site
+// (frontend-starter exports to a static GitHub pages site, so this is true by default)
+const outputStaticSite = true;
  
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 
-  // TODO: set to `standalone`, unless you want to export a static site
-  output: 'export',
+  output: outputStaticSite ? 'export' : 'standalone',
+
+  images: {
+    unoptimized: outputStaticSite,
+  },
 };
 
 export default withMDX(nextConfig);

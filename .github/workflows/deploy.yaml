@@ -32,7 +32,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email ""
           git add .
-          git commit -m "Deploy to branch"
+          git commit -m "Deploy frontend-build to branch"
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git push --force origin frontend-deployment
 
