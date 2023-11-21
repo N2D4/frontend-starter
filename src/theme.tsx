@@ -2,6 +2,7 @@
 
 import { CssBaseline, CssVarsProvider, extendTheme, getInitColorSchemeScript } from "@mui/joy";
 import NextLink from "next/link";
+import React from "react";
 
 export default function ThemeProvider(props: { children: React.ReactNode }) {
   const theme = extendTheme({
@@ -21,7 +22,8 @@ export default function ThemeProvider(props: { children: React.ReactNode }) {
     components: {
       JoyLink: {
         defaultProps: {
-          component: (props) => (<NextLink {...props} />)
+          // eslint-disable-next-line react/display-name
+          component: React.forwardRef((props, ref) => (<NextLink {...props} ref={ref} />)),
         },
       },
 

@@ -42,7 +42,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     img: (props) => {
       const { alt, ...imageProps } = props;
       const regexResult = alt?.match(/(.*)\|([0-9]*)x([0-9]*)$/);
-      console.log({regexResult});
       return (
         <Image
           alt={regexResult?.[1] ?? alt ?? ""}

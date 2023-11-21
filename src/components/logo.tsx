@@ -6,12 +6,14 @@ import { Image } from "./image";
 type ImageProps = React.ComponentProps<typeof Image>;
 
 export function Logo(props: (ImageProps | Omit<ImageProps, "src" | "alt">) & { full?: boolean }) {
+  const { full, ...imageProps } = props;
+
   return (
     <Link href="/">
       <Image
-        src={props.full ? logoFull : logo}
+        src={full ? logoFull : logo}
         alt="Logo"
-        {...props}
+        {...imageProps}
       />
     </Link>
   );

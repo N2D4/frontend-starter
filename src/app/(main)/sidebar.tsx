@@ -5,13 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export function Sidebar(props: SheetProps & { onCloseSidebar?: () => void, showLogo?: boolean }) {
-  const { onCloseSidebar = () => {}, ...sheetProps } = props;
+  const { onCloseSidebar = () => {}, showLogo, ...sheetProps } = props;
 
   return (
     <Sheet
       {...sheetProps}
     >
-      {props.showLogo && (
+      {showLogo && (
         <Box padding={2}>
           <Logo full height={48} />
         </Box>

@@ -21,7 +21,7 @@ const nextConfig = {
 
   // TODO set to your own basePath (or, if you're not sure what it means, just remove the property)
   // (frontend-starter exports to a static GitHub pages site, so this is set to that basePath by default)
-  basePath: outputStaticSite ? '/out' : throwErr('Please set your basePath in next.config.mjs!'),
+  basePath: outputStaticSite ? '/frontend-starter' : throwErr('Please set your basePath in next.config.mjs!'),
 
   output: outputStaticSite ? 'export' : 'standalone',
 
