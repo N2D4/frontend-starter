@@ -5,7 +5,7 @@ const allowedTypes = new Map([
     marginY: 2,
   }],
   ['h1', {
-    marginTop: 6,
+    marginTop: 5,
     marginBottom: 2,
   }],
   ['h2', {

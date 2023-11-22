@@ -50,20 +50,6 @@ export function EnumerationItem(props: EnumerationItemProps) {
   let { type, children, ...listItemProps } = props;
   type ??= enumeration?.type;
 
-  // some lists have sublists, and when rendering checkboxes we want to
-  // render the sublists that are at the end of this enumeration differently
-  let normalChildren = children;
-  let trailingSubLists: React.ReactNode[] = [];
-  console.log(normalChildren);
-  if (Array.isArray(normalChildren)) {
-    let i;
-    for (i = normalChildren.length - 1; i >= 0; i--) {
-      if (!["ul", "ol", "Enumeration"].includes(normalChildren[i]?.type?.name)) break;
-      trailingSubLists.unshift(normalChildren[i]);
-    }
-    normalChildren = normalChildren.slice(0, i + 1);
-  }
-
 
   return (
     <Typography
@@ -100,7 +86,7 @@ export function EnumerationItem(props: EnumerationItemProps) {
             />
           </Stack>
           <Box>
-            {normalChildren}
+            {children}
           </Box>
         </Stack>
       )}

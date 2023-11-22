@@ -47,7 +47,7 @@ export default function Layout(props: { children: React.ReactNode }) {
               borderTop: 'none',
               borderBottom: 'none',
               backgroundColor: 'transparent',
-              width: '280px',
+              width: '250px',
               flexShrink: 0,
               display: 'block',
               [isCompactMediaQuery]: {
@@ -55,7 +55,7 @@ export default function Layout(props: { children: React.ReactNode }) {
               },
             }}
           />
-          <Box component="main" paddingX={3}>
+          <Box component="main" paddingX={6}>
             {props.children}
           </Box>
         </Stack>

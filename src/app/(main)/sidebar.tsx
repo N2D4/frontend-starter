@@ -38,12 +38,61 @@ export function Sidebar(props: SheetProps & {
         <NavigationItem href="/" onCloseSidebar={onCloseSidebar}>
           Overview
         </NavigationItem>
-        <NavigationItem href="/using-mdx" onCloseSidebar={onCloseSidebar}>
-          Using MDX
+        <NavigationItem href="/getting-started" onCloseSidebar={onCloseSidebar}>
+          Getting Started
         </NavigationItem>
-        <Folder title="Reasoning">
-          <NavigationItem href="/reasoning/joy-ui" onCloseSidebar={onCloseSidebar}>
-            Why Joy UI?
+        <Folder title="Guides">
+          <NavigationItem href="/using-mdx" onCloseSidebar={onCloseSidebar}>
+            Using MDX
+          </NavigationItem>
+          <NavigationItem href="/joy-ui" onCloseSidebar={onCloseSidebar}>
+            CSS-in-JS and Joy UI
+          </NavigationItem>
+          <NavigationItem href="/github-actions" onCloseSidebar={onCloseSidebar}>
+            CI/CD with GitHub Actions
+          </NavigationItem>
+        </Folder>
+        <Folder title="Hooks">
+          <NavigationItem href="/hooks/use-snackbar" onCloseSidebar={onCloseSidebar}>
+            useSnackbar
+          </NavigationItem>
+        </Folder>
+        <Folder title="Components">
+          <NavigationItem href="/components/async-button" onCloseSidebar={onCloseSidebar}>
+            AsyncButton
+          </NavigationItem>
+          <NavigationItem href="/components/async-icon-button" onCloseSidebar={onCloseSidebar}>
+            AsyncIconButton
+          </NavigationItem>
+          <NavigationItem href="/components/code-block" onCloseSidebar={onCloseSidebar}>
+            CodeBlock
+          </NavigationItem>
+          <NavigationItem href="/components/copy-button" onCloseSidebar={onCloseSidebar}>
+            CopyButton
+          </NavigationItem>
+          <NavigationItem href="/components/enumeration" onCloseSidebar={onCloseSidebar}>
+            Enumeration
+          </NavigationItem>
+          <NavigationItem href="/components/icon" onCloseSidebar={onCloseSidebar}>
+            Icon
+          </NavigationItem>
+          <NavigationItem href="/components/image" onCloseSidebar={onCloseSidebar}>
+            Image
+          </NavigationItem>
+          <NavigationItem href="/components/inline-code" onCloseSidebar={onCloseSidebar}>
+            InlineCode
+          </NavigationItem>
+          <NavigationItem href="/components/logo" onCloseSidebar={onCloseSidebar}>
+            Logo
+          </NavigationItem>
+          <NavigationItem href="/components/paragraph" onCloseSidebar={onCloseSidebar}>
+            Paragraph
+          </NavigationItem>
+          <NavigationItem href="/components/quote-block" onCloseSidebar={onCloseSidebar}>
+            QuoteBlock
+          </NavigationItem>
+          <NavigationItem href="/components/smart-link" onCloseSidebar={onCloseSidebar}>
+            SmartLink
           </NavigationItem>
         </Folder>
       </List>
@@ -84,6 +133,10 @@ function NavigationItem(props: { children: React.ReactNode, href: string, onClos
           }
           props.onCloseSidebar();
         }}
+        sx={{
+          paddingX: 2,
+          fontWeight: selected ? 'bold !important' : undefined,
+        }}
       >
         {props.children}
       </ListItemButton>
@@ -97,7 +150,7 @@ function Folder(props: { title: React.ReactNode, children: React.ReactNode }) {
   return (
     <ListItem
       nested
-      sx={{ marginY: 1 }}
+      sx={{ marginY: 0.5 }}
     >
       <ListItem>
         <ListItemButton
