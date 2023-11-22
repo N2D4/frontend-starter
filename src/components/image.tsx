@@ -1,3 +1,4 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import NextImage, { ImageProps as NextImageProps } from "next/image";
 
 export function Image(props: NextImageProps & { disableStrictCLS?: boolean }) {
@@ -14,6 +15,7 @@ export function Image(props: NextImageProps & { disableStrictCLS?: boolean }) {
       width={width ?? (disableStrictCLS ? 16 : undefined)}
       height={height ?? (disableStrictCLS ? 16 : undefined)}
       src={updatedSrc}
+      placeholder={typeof updatedSrc !== "string" ? "blur" : undefined}
       {...nextImageProps}
       style={{
         ...disableStrictCLS ? {
