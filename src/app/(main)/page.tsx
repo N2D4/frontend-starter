@@ -5,7 +5,7 @@ export default function Home() {
 
       todo:
         - write docs
-        - dark theme logos
+        - extract table, ul into own components
     </>
   );
 }
