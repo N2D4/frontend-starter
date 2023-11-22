@@ -1,4 +1,5 @@
 import { CodeBlock } from '@/components/code-block';
+import { Enumeration, EnumerationItem } from '@/components/enumeration';
 import { Image } from '@/components/image';
 import { InlineCode } from '@/components/inline-code';
 import { Paragraph } from '@/components/paragraph';
@@ -63,56 +64,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       }}/>
     ),
     ul: (props) => (
-      <ul
-        {...props}
-        style={{
-          ...props.className?.includes('contains-task-list') ? {
-            listStyleType: "none",
-            paddingInlineStart: 16,
-          } : {},
-          ...props.style,
-        }}
+      <Enumeration
+        type={props.className?.includes('contains-task-list') ? "checklist" : "bulleted"}
+        {...props as {}}
       />
     ),
-    li: (props) => (
-      <Typography display="list-item" component="li" {...props as {}}>
-        {props.className?.includes('task-list-item') ? (
-          <Box
-            display="grid"
-            gridTemplateColumns={"auto 1fr"}
-            columnGap={1}
-            sx={{
-              "& > *": {
-                justifyContent: "center",
-              },
-            }}
-          >
-            <Stack>
-              <Checkbox
-                readOnly
-                checked={!!(props.children as any)[0].props.checked}
-                sx={{
-                  pointerEvents: "none",
-                }}
-              />
-            </Stack>
-            <Stack>
-              <Box>
-                {(props.children as any).slice(2).filter((x: any) => x?.type?.name !== "ul")}
-              </Box>
-            </Stack>
-            <Stack />
-            <Stack>
-              <Box>
-                {(props.children as any).slice(2).filter((x: any) => x?.type?.name === "ul")}
-              </Box>
-            </Stack>
-          </Box>
-        ) : (
-          props.children
-        )}
-      </Typography>
-    ),
+    li: (props) => {
+      const isTaskListItem = !!props.className?.includes('task-list-item');
+      return (
+        <EnumerationItem
+          checked={isTaskListItem && !!(props.children as any)[0].props.checked}
+          {...props as {}}
+        >
+          {isTaskListItem ? (props.children as any).slice(2) : props.children}
+        </EnumerationItem>
+      );
+      },
     hr: (props) => (
       <Divider
         sx={{

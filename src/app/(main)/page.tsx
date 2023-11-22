@@ -1,11 +1,17 @@
+import { Paragraph } from "@/components/paragraph";
+
 export default function Home() {
   return (
     <>
-      Main content<br />
+      <Paragraph body>
+        Welcome to frontend-starter!
+      </Paragraph>
 
-      todo:
-        - write docs
-        - extract table, ul into own components
+      <Paragraph body>
+        This is a starter template for a frontend project. It includes:
+      </Paragraph>
+
+      
     </>
   );
 }
