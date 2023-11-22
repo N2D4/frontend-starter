@@ -25,10 +25,12 @@ export function Icon(props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithout
       fontSize="var(--Icon-fontSize, 20px) !important"
       width="1em !important"
       height="1em !important"
+      {...boxProps}
       className={`material-symbols-rounded ${boxProps.className ?? ""}`}
       sx={{
         "--Icon-fontSize": size ?? undefined,
         fontVariationSettings: `'FILL' ${fill ? 1 : 0}, 'wght' ${weight ?? 400}, 'GRAD' ${grade ?? 0}, 'opsz' ${opticalSize ?? 20}`,
+        ...boxProps.sx,
       }}
     >
       {icon}
