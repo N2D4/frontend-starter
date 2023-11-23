@@ -34,7 +34,11 @@ export function Paragraph(props: ParagraphProps) {
 
   return (
     <Typography
-      level={level === 'body' ? undefined : level}
+      {...level === 'body' ? {
+        component: 'div',
+      } : {
+        level,
+      }}
       {...Object.fromEntries(Object.entries(props).filter(([k]) => !allowedTypes.has(k as any)))}
       sx={{
         ...allowedTypes.get(level),

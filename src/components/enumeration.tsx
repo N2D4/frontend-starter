@@ -25,7 +25,13 @@ export function Enumeration(props: EnumerationProps) {
 
   return (
     <enumerationContext.Provider value={{ type }}>
-      <Component {...listProps as {}} />
+      <Component
+        {...listProps as {}}
+        style={{
+          margin: 0,
+          ...listProps.style,
+        }}
+      />
     </enumerationContext.Provider>
   );
 }

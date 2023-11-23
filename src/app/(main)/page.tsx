@@ -1,6 +1,13 @@
+import { Enumeration, EnumerationItem } from "@/components/enumeration";
 import { Paragraph } from "@/components/paragraph";
+import { SmartLink } from "@/components/smart-link";
 
 export default function Home() {
+  // Note: For demonstration purposes, this is a normal .tsx React
+  // component, but it could've been written in MDX instead.
+  //
+  // See /using-mdx for more details.
+
   return (
     <>
       <Paragraph h1>
@@ -15,7 +22,26 @@ export default function Home() {
         This is a starter template for a frontend project. It includes:
       </Paragraph>
 
+      <Paragraph body>
+        <Enumeration type="bulleted">
+          <EnumerationItem>
+            <b>React + Next.js</b> as a base framework
+          </EnumerationItem>
+          <EnumerationItem>
+            <b><SmartLink href="/joy-ui">MUI&apos;s Joy UI</SmartLink></b> as a UI library, built on the same backbones as the Material UI library, but with more customizable styling
+          </EnumerationItem>
+          <EnumerationItem>
+            <b><SmartLink href="/using-mdx">MDX</SmartLink></b> for writing content & text-heavy server components
+          </EnumerationItem>
+          <EnumerationItem>
+            <b><SmartLink href="/github-actions">GitHub Actions</SmartLink></b> for CI/CD
+          </EnumerationItem>
+        </Enumeration>
+      </Paragraph>
 
+      <Paragraph body>
+        Check out the <SmartLink href="/getting-started">Getting Started</SmartLink> guide for more information.
+      </Paragraph>
     </>
   );
 }
