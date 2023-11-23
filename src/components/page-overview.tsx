@@ -16,9 +16,11 @@ type Section = {
   subSections: Section[],
 };
 
-export function PageOverview(props: { children: React.ReactNode, onOverviewChange: (sections: Section[]) => void }) {
+export type Overview = Section[];
+
+export function PageOverview(props: { children: React.ReactNode, onOverviewChange: (sections: Overview) => void }) {
   const ref = useRef<HTMLElement>(null);
-  const [lastOverview, setLastOverview] = useState<Section[] | null>(null);
+  const [lastOverview, setLastOverview] = useState<Overview | null>(null);
 
   const mutationCallback = useCallback((mutations: MutationRecord[] | "init") => {
     const node = ref?.current ?? throwErr("mutation callback should never be called when ref is null!");

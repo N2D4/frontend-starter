@@ -18,6 +18,12 @@ export default function ThemeProvider(props: { children: React.ReactNode }) {
       h2: {
         fontWeight: "var(--joy-fontWeight-md, 500)",
       },
+      h3: {
+        fontWeight: "var(--joy-fontWeight-md, 500)",
+      },
+      h4: {
+        fontWeight: "var(--joy-fontWeight-md, 500)",
+      },
     },
     components: {
       JoyLink: {
