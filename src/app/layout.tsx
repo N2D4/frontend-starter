@@ -9,11 +9,10 @@ import "geist/font/mono";
 import './globals.css';
 import ThemeProvider from '@/theme';
 
-
+// TODO ASAP: Update app metadata
 export const metadata: Metadata = {
-  title: 'N2D4\'s App',
-  description: 'Built by N2D4',
-
+  title: 'frontend-starter',
+  description: 'Frontend template built by N2D4',
 };
 
 export default function RootLayout({

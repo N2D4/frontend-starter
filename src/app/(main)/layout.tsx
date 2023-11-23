@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Drawer, ListSubheader, Sheet, SheetProps, Stack, Typography, listItemButtonClasses, useTheme } from "@mui/joy";
+import { Box, Drawer, Stack, useTheme } from "@mui/joy";
 import { useState } from "react";
 import { Header } from "./header";
 import { Sidebar } from "./sidebar";
