@@ -1,9 +1,11 @@
 "use client";
 
-import { Box, Drawer, Stack, useTheme } from "@mui/joy";
+import { Box, Divider, Drawer, Stack, useTheme } from "@mui/joy";
 import { useState } from "react";
 import { Header } from "./header";
 import { Sidebar } from "./sidebar";
+import { Logo } from "@/components/logo";
+import { PageOverview } from "@/components/page-overview";
 
 const headerHeight = 64;
 
@@ -55,17 +57,37 @@ export default function Layout(props: { children: React.ReactNode }) {
               },
             }}
           />
-          <Box
-            component="main"
+          <Stack
             paddingX={{
               lg: 6,
               md: 4,
               xs: 2,
             }}
+            flexGrow={1}
+            paddingY={2}
             minWidth={0}
           >
-            {props.children}
-          </Box>
+            <PageOverview
+              onOverviewChange={console.log}
+            >
+              <Box
+                component="main"
+              >
+                {props.children}
+              </Box>
+            </PageOverview>
+            <Divider
+              sx={{
+                marginY: 4,
+              }}
+            />
+            <Stack
+              alignItems="center"
+              component="footer"
+            >
+              <Logo full height={48} />
+            </Stack>
+          </Stack>
         </Stack>
       </Stack>
       <Drawer

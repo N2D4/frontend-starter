@@ -16,7 +16,7 @@ export default function ThemeProvider(props: { children: React.ReactNode }) {
         fontWeight: "var(--joy-fontWeight-lg, 600)",
       },
       h2: {
-        fontWeight: "var(--joy-fontWeight-lg, 600)",
+        fontWeight: "var(--joy-fontWeight-md, 500)",
       },
     },
     components: {

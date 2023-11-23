@@ -1,6 +1,9 @@
+import Typography from '@mui/joy/Typography';
+import { Paragraph } from '../../../components/paragraph';
+
 # Getting Started
 
-## First Steps
+## First steps \{#first-steps}
 
 Either click the [Use this template](https://github.com/new?template_name=frontend-starter&template_owner=N2D4) button on [our GitHub page](https://github.com/N2D4/frontend-starter) or initialize it using npm:
 
@@ -13,3 +16,32 @@ Once you've cloned the repository, read the README.md file and follow the instru
 ```sh
 npm run dev
 ```
+
+
+## Working through TODOs \{#todos}
+
+It is recommended to use TODOs to keep track of undone tasks. frontend-starter has special support for TODOs.
+
+By using the string TODO{} ASAP anywhere in your code, you can create a blocking TODO item. If any are found in your repository, a notice will be displayed on every build. To see all blocking TODOs, run:
+
+```sh
+npm run todo
+```
+
+If you clone the repository from GitHub, it comes with a few TODOs already in place. Be sure to complete them before going into production.
+
+
+## Fonts & styling \{#fonts-styling}
+
+frontend-starter uses Vercel's [Geist Sans & Mono](https://vercel.com/font) font by default.
+
+<Paragraph
+  body
+  sx={{
+    fontFamily: 'inherit',
+  }}
+>
+  Sometimes, you may see some text that is using a handwriting font like this. <Typography display="inline" component="span">This is a safeguard to make sure you wrap all text in a component that supports Joy UI styling. Usually, you would use `<Paragraph body />` or `<Typography />` for this purpose.</Typography>
+</Paragraph>
+
+For more about styling and CSS-in-JS, see the [page about Joy UI](/joy-ui).

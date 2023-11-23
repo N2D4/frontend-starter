@@ -1,4 +1,6 @@
 import { Typography, TypographyProps } from "@mui/joy";
+import { SmartLink } from "./smart-link";
+import { Icon } from "./icon";
 
 const allowedTypes = new Map([
   ['body', {
@@ -9,12 +11,11 @@ const allowedTypes = new Map([
     marginBottom: 2,
   }],
   ['h2', {
-    marginTop: 4,
+    marginTop: 3,
     marginBottom: 2,
   }],
   ['h3', {
-    marginTop: 3,
-    marginBottom: 2,
+    marginY: 2,
   }],
   ['h4', {
     marginY: 2,
@@ -32,6 +33,8 @@ export function Paragraph(props: ParagraphProps) {
   const level = [...allowedTypes.keys()].find((type) => props[type]);
   if (!level) throw new Error("Invalid paragraph type");
 
+  const {children, ...typographyProps} = Object.fromEntries(Object.entries(props).filter(([k]) => !allowedTypes.has(k as any)));
+
   return (
     <Typography
       {...level === 'body' ? {
@@ -39,11 +42,41 @@ export function Paragraph(props: ParagraphProps) {
       } : {
         level,
       }}
-      {...Object.fromEntries(Object.entries(props).filter(([k]) => !allowedTypes.has(k as any)))}
+      display="block"
+      {...typographyProps}
       sx={{
         ...allowedTypes.get(level),
-        ...props.sx,
+        ...typographyProps.sx,
       }}
-    />
+    >
+      <Typography
+        display="inline"
+        component="span"
+        sx={{
+          "& > .MuiTypography-endDecorator": {
+            verticalAlign: 'bottom',
+            display: 'none',
+          },
+          "&:hover > .MuiTypography-endDecorator": {
+            display: 'inline-flex',
+          },
+        }}
+        endDecorator={level.startsWith('h') && typographyProps.id ? (
+          <SmartLink
+            href={`#${typographyProps.id}`}
+            alignSelf="end"
+            sx={{
+              color: 'text.tertiary',
+              fontWeight: 'normal',
+              textUnderlineOffset: '0',
+            }}
+          >
+            <Icon icon="link" />
+          </SmartLink>
+        ) : undefined}
+      >
+        {children}
+      </Typography>
+    </Typography>
   );
 }

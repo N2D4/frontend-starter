@@ -8,6 +8,21 @@ export function PageLoadingIndicator() {
       left={0}
       right={0}
       zIndex={9999999}
+      sx={{
+        pointerEvents: "none",
+        animation: "page-loading-indicator 0.05s",
+        "@keyframes page-loading-indicator": {
+          "0%": {
+            visibility: 'hidden',
+          },
+          "99%": {
+            visibility: 'hidden',
+          },
+          "100%": {
+            visibility: 'visible',
+          },
+        },
+      }}
     >
       <LinearProgress
         variant="solid"

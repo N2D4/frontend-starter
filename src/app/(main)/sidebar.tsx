@@ -91,6 +91,9 @@ export function Sidebar(props: SheetProps & {
           <NavigationItem href="/components/page-loading-indicator" onCloseSidebar={onCloseSidebar}>
             PageLoadingIndicator
           </NavigationItem>
+          <NavigationItem href="/components/page-overview" onCloseSidebar={onCloseSidebar}>
+            PageOverview
+          </NavigationItem>
           <NavigationItem href="/components/paragraph" onCloseSidebar={onCloseSidebar}>
             Paragraph
           </NavigationItem>
@@ -153,7 +156,8 @@ function NavigationItem(props: { children: React.ReactNode, href: string, onClos
         onClick={props.onCloseSidebar}
         sx={{
           paddingX: 2,
-          fontWeight: selected ? 'bold !important' : undefined,
+          fontWeight: selected ? '500 !important' : undefined,
+          color: selected ? 'text.primary' : 'text.tertiary',
           gap: 0,
           "& *": {
             textDecoration: 'none !important',
@@ -199,8 +203,8 @@ function Folder(props: { title: React.ReactNode, children: React.ReactNode }) {
           <Typography
             level="inherit"
             sx={{
-              fontWeight: open ? 'bold' : undefined,
-              color: open ? 'text.primary' : 'inherit',
+              fontWeight: open ? '500' : undefined,
+              color: open ? 'text.primary' : 'text.tertiary',
             }}
           >
             {props.title}

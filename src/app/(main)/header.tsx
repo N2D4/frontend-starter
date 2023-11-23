@@ -15,6 +15,7 @@ export function Header(props: SheetProps & {
   return (
     <Sheet
       variant="outlined"
+      component="header"
       {...sheetProps}
       sx={{
         paddingX: 2,

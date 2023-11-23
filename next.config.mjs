@@ -1,13 +1,14 @@
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
+import remarkHeadingId from 'remark-heading-id';
 
 import createMDX from "@next/mdx";
 
 const withMDX = createMDX({
   options: {
     rehypePlugins: [rehypeKatex],
-    remarkPlugins: [remarkMath, remarkGfm],
+    remarkPlugins: [remarkMath, remarkGfm, remarkHeadingId],
   },
 });
 
