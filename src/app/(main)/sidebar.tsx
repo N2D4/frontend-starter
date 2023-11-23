@@ -120,7 +120,6 @@ function Subheader(props: { icon: React.ReactNode, children: React.ReactNode }) 
 }
 
 function NavigationItem(props: { children: React.ReactNode, href: string, onCloseSidebar: () => void }) {
-  const router = useRouter();
   const pathname = usePathname();
 
   const folder = use(folderContext);
@@ -151,6 +150,7 @@ function NavigationItem(props: { children: React.ReactNode, href: string, onClos
         selected={selected}
         component={SmartLink}
         href={props.href}
+        onClick={props.onCloseSidebar}
         sx={{
           paddingX: 2,
           fontWeight: selected ? 'bold !important' : undefined,

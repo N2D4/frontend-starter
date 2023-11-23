@@ -55,7 +55,15 @@ export default function Layout(props: { children: React.ReactNode }) {
               },
             }}
           />
-          <Box component="main" paddingX={6}>
+          <Box
+            component="main"
+            paddingX={{
+              lg: 6,
+              md: 4,
+              xs: 2,
+            }}
+            minWidth={0}
+          >
             {props.children}
           </Box>
         </Stack>
