@@ -6,6 +6,7 @@ import { SheetProps, Sheet, List, listItemButtonClasses, ListItem, Typography, L
 import { usePathname, useRouter } from "next/navigation";
 import React, { Dispatch, SetStateAction, use, useCallback, useEffect, useMemo, useState } from "react";
 import { SiteSearch } from "./site-search";
+import { SmartLink } from "@/components/smart-link";
 
 export function Sidebar(props: SheetProps & {
   onCloseSidebar?: () => void,
@@ -87,6 +88,9 @@ export function Sidebar(props: SheetProps & {
           <NavigationItem href="/components/logo" onCloseSidebar={onCloseSidebar}>
             Logo
           </NavigationItem>
+          <NavigationItem href="/components/page-loading-indicator" onCloseSidebar={onCloseSidebar}>
+            PageLoadingIndicator
+          </NavigationItem>
           <NavigationItem href="/components/paragraph" onCloseSidebar={onCloseSidebar}>
             Paragraph
           </NavigationItem>
@@ -145,17 +149,15 @@ function NavigationItem(props: { children: React.ReactNode, href: string, onClos
     <ListItem>
       <ListItemButton
         selected={selected}
-        onClick={() => {
-          if (isLocal) {
-            router.push(props.href);
-          } else {
-            window.open(props.href, "_blank");
-          }
-          props.onCloseSidebar();
-        }}
+        component={SmartLink}
+        href={props.href}
         sx={{
           paddingX: 2,
           fontWeight: selected ? 'bold !important' : undefined,
+          gap: 0,
+          "& *": {
+            textDecoration: 'none !important',
+          },
         }}
       >
         {props.children}

@@ -1,12 +1,14 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import ThemeProvider from '@/theme';
 import { SnackbarProvider } from '@/hooks/use-snackbar';
+import type { Metadata } from 'next';
 
 // BEGIN Used for the font in src/theme.tsx
 import 'geist/font/sans';
 import "geist/font/mono";
 // END Used for the font in src/theme.tsx
+
+import './globals.css';
+import ThemeProvider from '@/theme';
+
 
 export const metadata: Metadata = {
   title: 'N2D4\'s App',
