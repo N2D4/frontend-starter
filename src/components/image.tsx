@@ -15,7 +15,7 @@ export function Image(props: NextImageProps & { disableStrictCLS?: boolean }) {
       width={width ?? (disableStrictCLS ? 16 : undefined)}
       height={height ?? (disableStrictCLS ? 16 : undefined)}
       src={updatedSrc}
-      placeholder={typeof updatedSrc !== "string" ? "blur" : undefined}
+      placeholder={(+(width ?? 41) > 40 || +(height ?? 41) > 40) && typeof updatedSrc !== "string" ? "blur" : undefined}
       {...nextImageProps}
       style={{
         ...disableStrictCLS ? {

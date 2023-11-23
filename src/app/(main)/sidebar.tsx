@@ -1,8 +1,10 @@
+"use client";
+
 import { Icon } from "@/components/icon";
 import { Logo } from "@/components/logo";
 import { SheetProps, Sheet, List, listItemButtonClasses, ListItem, Typography, ListItemButton, IconButton, ListSubheader, Stack, Divider, Box } from "@mui/joy";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, use, useCallback, useEffect, useMemo, useState } from "react";
 import { SiteSearch } from "./site-search";
 
 export function Sidebar(props: SheetProps & {
@@ -117,9 +119,27 @@ function NavigationItem(props: { children: React.ReactNode, href: string, onClos
   const router = useRouter();
   const pathname = usePathname();
 
+  const folder = use(folderContext);
+
   const isLocal = props.href.startsWith("/");
   const pathnameCut = pathname.split("#")[0].split("?")[0];
   const selected = isLocal && !!pathnameCut && pathnameCut === props.href;
+
+  const openParentFolders = useCallback(() => {
+    let curFolder = folder;
+    while (curFolder != null) {
+      curFolder.setOpen(true);
+      curFolder = curFolder.parent;
+    }
+  }, [folder]);
+
+  const [prevSelected, setPrevSelected] = useState(false);
+  useEffect(() => {
+    setPrevSelected(selected);
+    if (selected && !prevSelected) {
+      openParentFolders();
+    }
+  }, [selected, openParentFolders, prevSelected]);
 
   return (
     <ListItem>
@@ -144,8 +164,22 @@ function NavigationItem(props: { children: React.ReactNode, href: string, onClos
   );
 }
 
+type FolderInfo = {
+  open: boolean,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  parent: FolderInfo | null,
+};
+const folderContext = React.createContext<FolderInfo | null>(null);
+
 function Folder(props: { title: React.ReactNode, children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const parentFolder = use(folderContext);
+
+  const context = useMemo(() => ({
+    open,
+    setOpen: setOpen,
+    parent: parentFolder,
+  }), [open, setOpen, parentFolder]);
 
   return (
     <ListItem
@@ -171,14 +205,14 @@ function Folder(props: { title: React.ReactNode, children: React.ReactNode }) {
           </Typography>
         </ListItemButton>
       </ListItem>
-      {open && (
-        <Stack direction="row">
-          <Divider orientation="vertical" sx={{ marginLeft: 1.2, marginRight: 1.8 }} />
-          <List>
+      <Stack direction="row" display={open ? undefined : 'none'}>
+        <Divider orientation="vertical" sx={{ marginLeft: 1.2, marginRight: 1.8 }} />
+        <List>
+          <folderContext.Provider value={context}>
             {props.children}
-          </List>
-        </Stack>
-      )}
+          </folderContext.Provider>
+        </List>
+      </Stack>
     </ListItem>
   );
 }
