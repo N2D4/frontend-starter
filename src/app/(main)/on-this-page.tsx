@@ -41,7 +41,7 @@ function Section(props: { section: Overview[number], paddingLeft?: number }) {
             paddingLeft: 1 + paddingLeft,
           }}
         >
-          {props.section.element.textContent}
+          {[...props.section.element.querySelectorAll(":not(.n2-icon)")].flatMap(node => [...node.childNodes]).filter((node) => node.nodeType === Node.TEXT_NODE).map((node) => node.textContent).join("")}
         </ListItemButton>
       </ListItem>
       <List>
