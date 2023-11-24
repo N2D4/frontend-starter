@@ -33,6 +33,7 @@ export function Logo(props: (ImageProps | Omit<ImageProps, "src" | "alt">) & { f
             alt="Logo"
             priority
             {...imageProps}
+            placeholder="empty"
           />
         </Link>
       ))}
