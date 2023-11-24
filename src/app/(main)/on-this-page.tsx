@@ -38,7 +38,7 @@ function Section(props: { section: Overview[number], paddingLeft?: number }) {
           component={SmartLink}
           href={`#${props.section.id}`}
           sx={{
-            paddingLeft: 1 + 2 * paddingLeft,
+            paddingLeft: 1 + paddingLeft,
           }}
         >
           {props.section.element.textContent}
