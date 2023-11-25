@@ -8,14 +8,14 @@ const typeInfo = {
     style: {
       marginY: 2,
     },
-    component: 'div',
+    component: Box,
     level: undefined,
   },
   sidenote: {
     style: {
       marginY: 2,
     },
-    component: 'div',
+    component: Box,
     level: undefined,
   },
   h1: {

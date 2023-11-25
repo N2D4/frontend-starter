@@ -92,7 +92,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <QuoteBlock {...props as {}} />
     ),
     pre: (props) => (
-      <CodeBlock mdxPreProps={props} />
+      <Paragraph body>
+        <CodeBlock mdxPreProps={props} />
+      </Paragraph>
     ),
     code: (props) => (
       <InlineCode {...props as {}} />
