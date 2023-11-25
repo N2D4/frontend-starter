@@ -67,8 +67,6 @@ export function Paragraph(props: ParagraphProps) {
 
   const {children, ...typographyProps} = Object.fromEntries(Object.entries(props).filter(([k]) => !(k in typeInfo)));
 
-  console.log({ level, props, typographyProps, ti: typeInfo[level]});
-
   return (
     <Typography
       component={typeInfo[level].component}
