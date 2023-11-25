@@ -32,7 +32,7 @@ export default function RootLayout({
            * The font here is used as a fallback, and is intentionally egregious to make it obvious
            * when you forgot to wrap your text in a <Typography /> or <Paragraph /> component.
            */
-          fontFamily: 'Brush Script MT',
+          fontFamily: '"Brush Script MT", "Zapfino", "Comic Sans MS", cursive',
         }}
       >
         <ThemeProvider>
