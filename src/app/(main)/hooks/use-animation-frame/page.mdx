@@ -1,5 +1,6 @@
-import { ExampleCard } from "../../../../components/example-card";
+import { InlineCode } from "../../../../components/inline-code";
 import { MovingBallExample } from "./moving-ball";
+
 export const metadata = {
   title: "useAnimationFrame",
 };
@@ -8,5 +9,17 @@ export const metadata = {
 # {metadata.title}
 
 Registers a callback to be called on every animation frame as long as the component is visible to the user.
+
+## Arguments \{#arguments}
+
+- `callback`: A function to be called on every [animation frame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) with a single argument, `timeMs: number`. The function will receive the current timestamp as an argument.
+
+## Returns \{#returns}
+
+No return value.
+
+## Examples \{#examples}
+
+### Animating an object \{#animating-an-object}
 
 <MovingBallExample />
