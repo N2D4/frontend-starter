@@ -8,7 +8,10 @@ import ThemeProvider from '@/theme';
 
 // TODO ASAP: Update app metadata
 export const metadata: Metadata = {
-  title: 'frontend-starter',
+  title: {
+    default: 'frontend-starter',
+    template: '%s | frontend-starter',
+  },
   description: 'Frontend template built by N2D4',
 };
 

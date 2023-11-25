@@ -1,6 +1,11 @@
 import { Enumeration, EnumerationItem } from "@/components/enumeration";
 import { Paragraph } from "@/components/paragraph";
 import { SmartLink } from "@/components/smart-link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Overview",
+};
 
 export default function Home() {
   // Note: For demonstration purposes, this is a normal .tsx React
@@ -32,9 +37,6 @@ export default function Home() {
           </EnumerationItem>
           <EnumerationItem>
             <b><SmartLink href="/using-mdx">MDX</SmartLink></b> for writing content & text-heavy server components
-          </EnumerationItem>
-          <EnumerationItem>
-            <b><SmartLink href="/github-actions">GitHub Actions</SmartLink></b> for CI/CD
           </EnumerationItem>
           <EnumerationItem>
             Several custom hooks, components, and utilities for common tasks

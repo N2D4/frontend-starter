@@ -51,9 +51,6 @@ export function Sidebar(props: SheetProps & {
           <NavigationItem href="/using-mdx" onCloseSidebar={onCloseSidebar}>
             Using MDX
           </NavigationItem>
-          <NavigationItem href="/github-actions" onCloseSidebar={onCloseSidebar}>
-            CI/CD with GitHub Actions
-          </NavigationItem>
         </Folder>
         <Folder title="Hooks">
           <NavigationItem href="/hooks/use-animation-frame" onCloseSidebar={onCloseSidebar}>
