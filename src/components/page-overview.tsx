@@ -16,9 +16,12 @@ type Section = {
   subSections: Section[],
 };
 
-export type Overview = Section[];
+export type Overview = {
+  sections: Section[],
+  container: HTMLElement,
+};
 
-export function PageOverview(props: { children: React.ReactNode, onOverviewChange: (sections: Overview) => void }) {
+export function PageOverview(props: { children: React.ReactNode, onOverviewChange: (overview: Overview) => void }) {
   const ref = useRef<HTMLElement>(null);
   const [lastOverview, setLastOverview] = useState<Overview | null>(null);
 
@@ -49,21 +52,28 @@ export function PageOverview(props: { children: React.ReactNode, onOverviewChang
       });
     }
 
-    if (!deepPlainEquals(sections, lastOverview)) {
-      setLastOverview(sections);
-      props.onOverviewChange(sections);
+    const overview = {
+      container: node,
+      sections,
+    };
+
+    if (!deepPlainEquals(overview, lastOverview)) {
+      setLastOverview(overview);
+      props.onOverviewChange(overview);
     }
   }, [lastOverview, props]);
 
-  useMutationObserver({
-    targetRef: ref,
-    callback: mutationCallback,
-    childList: true,
-    subtree: true,
-    attributes: true,
-    characterData: true,
-    attributeFilter: ["id"],
-  });
+  useMutationObserver(
+    ref,
+    mutationCallback,
+    {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true,
+      attributeFilter: ["id"],
+    }
+  );
 
   return (
     <Box ref={ref}>

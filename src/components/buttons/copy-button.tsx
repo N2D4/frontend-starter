@@ -6,7 +6,7 @@ import { useSnackbar } from "@/hooks/use-snackbar";
 
 type PropsWithoutBase = {
   content: string,
-  onClick?: never,
+  onClick?: undefined,
 };
 type Props = PropsWithoutBase & Omit<React.ComponentProps<typeof AsyncIconButton>, keyof PropsWithoutBase>;
 

@@ -7,13 +7,15 @@ import { Sidebar } from "./sidebar";
 import { Logo } from "@/components/logo";
 import { Overview, PageOverview } from "@/components/page-overview";
 import { OnThisPage } from "./on-this-page";
+import { SmartLink } from "@/components/smart-link";
+import { Paragraph } from "@/components/paragraph";
 
 const headerHeight = 64;
 
 export default function Layout(props: { children: React.ReactNode }) {
   const theme = useTheme();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [pageOverview, setPageOverview] = useState<Overview>([]);
+  const [pageOverview, setPageOverview] = useState<Overview | null>(null);
 
   const isCompactMediaQuery = theme.breakpoints.down("lg");
 
@@ -88,9 +90,12 @@ export default function Layout(props: { children: React.ReactNode }) {
               component="footer"
             >
               <Logo full height={48} />
+              <Paragraph sidenote>
+                Built with <SmartLink href="https://github.com/N2D4/frontend-starter">frontend-starter</SmartLink>
+              </Paragraph>
             </Stack>
           </Stack>
-          <OnThisPage
+          <Stack
             paddingY={4}
             paddingRight={2}
             sx={{
@@ -99,14 +104,21 @@ export default function Layout(props: { children: React.ReactNode }) {
               height: `calc(100vh - ${headerHeight}px)`,
               width: '240px',
               flexShrink: 0,
-              visibility: pageOverview.length > 0 ? 'visible' : 'hidden',
+              visibility: pageOverview && pageOverview.sections.length > 0 ? 'visible' : 'hidden',
               display: {
                 xs: 'none',
                 md: 'flex',
               },
             }}
-            overview={pageOverview}
-          />
+          >
+            {pageOverview && (
+              <OnThisPage
+                screenOffset={headerHeight}
+                overview={pageOverview}
+                minHeight={0}
+              />
+            )}
+          </Stack>
         </Stack>
       </Stack>
       <Drawer

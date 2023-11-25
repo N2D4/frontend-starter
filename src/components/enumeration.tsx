@@ -38,7 +38,7 @@ export function Enumeration(props: EnumerationProps) {
 
 type EnumerationItemProps = React.ComponentProps<"li"> & (
   | {
-    type?: never,
+    type?: undefined,
     checked?: boolean,
   }
   | {

@@ -45,17 +45,26 @@ export function Sidebar(props: SheetProps & {
           Getting Started
         </NavigationItem>
         <Folder title="Guides">
+          <NavigationItem href="/joy-ui" onCloseSidebar={onCloseSidebar}>
+            Styling, CSS-in-JS, and Joy UI
+          </NavigationItem>
           <NavigationItem href="/using-mdx" onCloseSidebar={onCloseSidebar}>
             Using MDX
-          </NavigationItem>
-          <NavigationItem href="/joy-ui" onCloseSidebar={onCloseSidebar}>
-            CSS-in-JS and Joy UI
           </NavigationItem>
           <NavigationItem href="/github-actions" onCloseSidebar={onCloseSidebar}>
             CI/CD with GitHub Actions
           </NavigationItem>
         </Folder>
         <Folder title="Hooks">
+          <NavigationItem href="/hooks/use-animation-frame" onCloseSidebar={onCloseSidebar}>
+            useAnimationFrame
+          </NavigationItem>
+          <NavigationItem href="/hooks/use-intersection-observer" onCloseSidebar={onCloseSidebar}>
+            useIntersectionObserver
+          </NavigationItem>
+          <NavigationItem href="/hooks/use-mutation-observer" onCloseSidebar={onCloseSidebar}>
+            useMutationObserver
+          </NavigationItem>
           <NavigationItem href="/hooks/use-snackbar" onCloseSidebar={onCloseSidebar}>
             useSnackbar
           </NavigationItem>
