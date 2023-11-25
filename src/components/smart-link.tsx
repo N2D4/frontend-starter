@@ -23,6 +23,7 @@ export function SmartLink(props: LinkProps) {
           size="0.8em"
         />
       ) : undefined}
+      display="inline"
       {...props}
       sx={{
         "&:hover": {
@@ -34,7 +35,7 @@ export function SmartLink(props: LinkProps) {
         ...props.sx ?? {},
       }}
     >
-      <Box component="span" display="inline-flex" className="n2-smart-link-child">
+      <Box component="span" display="inline" className="n2-smart-link-child">
         {props.children}
       </Box>
     </Link>

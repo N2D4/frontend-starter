@@ -1,4 +1,4 @@
-import { Typography, TypographyProps } from "@mui/joy";
+import { Box, Typography, TypographyProps } from "@mui/joy";
 import { SmartLink } from "./smart-link";
 import { Icon } from "./icon";
 import { typedIncludes } from "@/utils/arrays";
@@ -83,25 +83,30 @@ export function Paragraph(props: ParagraphProps) {
         component="span"
         sx={{
           "& > .MuiTypography-endDecorator": {
-            verticalAlign: 'bottom',
             display: 'none',
           },
           "&:hover > .MuiTypography-endDecorator": {
-            display: 'inline-flex',
+            display: 'inline',
           },
         }}
         endDecorator={level.startsWith('h') && typographyProps.id ? (
-          <SmartLink
-            href={`#${typographyProps.id}`}
-            alignSelf="end"
-            sx={{
-              color: 'text.tertiary',
-              fontWeight: 'normal',
-              textUnderlineOffset: '0',
-            }}
-          >
-            <Icon icon="link" />
-          </SmartLink>
+          <Box display="inline" position="relative">
+            <SmartLink
+              position="absolute"
+              href={`#${typographyProps.id}`}
+              alignSelf="end"
+              sx={{
+                color: 'text.tertiary',
+                fontWeight: 'normal',
+                textUnderlineOffset: '0',
+                ':hover': {
+                  color: 'text.primary',
+                },
+              }}
+            >
+              <Icon icon="link" />
+            </SmartLink>
+          </Box>
         ) : undefined}
       >
         {children}
