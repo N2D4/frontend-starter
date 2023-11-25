@@ -19,7 +19,7 @@ export default function Home() {
       </Paragraph>
 
       <Paragraph body>
-        This is a starter template for a frontend project. It includes:
+        This is a starter template for a frontend project and at the same time its own documentation. It includes:
       </Paragraph>
 
       <Paragraph body>
@@ -35,6 +35,9 @@ export default function Home() {
           </EnumerationItem>
           <EnumerationItem>
             <b><SmartLink href="/github-actions">GitHub Actions</SmartLink></b> for CI/CD
+          </EnumerationItem>
+          <EnumerationItem>
+            Several custom hooks, components, and utilities for common tasks
           </EnumerationItem>
         </Enumeration>
       </Paragraph>
