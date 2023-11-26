@@ -1,6 +1,6 @@
 import { Box } from "@mui/joy";
 import { Code } from "bright";
-import { CopyButton } from "./buttons/copy-button";
+import { CopyButton } from "./copy-button";
 
 type CodeBlockProps = Omit<React.ComponentProps<typeof Box>, "children"> & {
   code?: string,
