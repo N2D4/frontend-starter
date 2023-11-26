@@ -26,6 +26,8 @@ const nextConfig = {
 
   output: outputStaticSite ? 'export' : 'standalone',
 
+  poweredByHeader: false,
+
   images: {
     unoptimized: outputStaticSite,
   },

@@ -4,7 +4,9 @@ import { useAnimationFrame } from "@/hooks/use-animation-frame";
 import { Box } from "@mui/joy";
 
 export function MovingBallClient() {
-  // note: doing this is considered bad practice in React as we are modifying the DOM directly, but it's just for demo
+  // Note: Translating a ball like this is considered
+  // bad practice in React. We shouldn't modify the DOM
+  // directly, but it's just for demo
 
   useAnimationFrame((time: DOMHighResTimeStamp) => {
     const seconds = time / 1000;
