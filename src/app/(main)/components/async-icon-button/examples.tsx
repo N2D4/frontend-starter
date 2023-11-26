@@ -12,19 +12,15 @@ export function WaitABitExample() {
 
 
 const waitABitCode = deindent`
-  export function WaitABit() {
-    return (
-      <>
-      Click this icon button:
-        <AsyncIconButton
-          onClick={async () => {
-            await wait(5_000);
-            alert("You waited 5 seconds!");
-          }}
-        >
-          <Icon icon="alarm" />
-        </AsyncIconButton>
-      </>
-    );
-  }
+  <Box>
+    Click this button!<br />
+    <AsyncIconButton
+      onClick={async () => {
+        await wait(5_000);
+        alert("You waited 5 seconds!");
+      }}
+    >
+      <Icon icon="alarm" />
+    </AsyncIconButton>
+  </Box>
 `;

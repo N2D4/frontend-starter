@@ -1,6 +1,28 @@
+import { SimpleCodeBlockExample } from "./examples";
+
 export const metadata = {
   title: "CodeBlock",
 };
 
 
 # {metadata.title}
+
+A code block component with syntax highlighting.
+
+**Note**: This component is only supported as a React Server Component, meaning it can *not* be re-rendered on the client.
+
+## Props \{#props}
+
+- `code`: The code to display.
+- `language`: The language of the code (such as `javascript`). If not given, no syntax highlighting will be applied.
+- `lineNumbers`: Whether to display line numbers. Defaults to `false`.
+- `theme`: The theme to use for syntax highlighting. One of `auto` (using Joy UI's theme setting), `dark`, `light`. Defaults to `auto`.
+- `disableBorder`: Whether to disable the border. Defaults to `false`.
+
+A more technical prop, `codeProps`, is available for advanced customizations.
+
+## Examples \{#examples}
+
+### Syntax highlighting \{#syntax-highlighting}
+
+<SimpleCodeBlockExample />

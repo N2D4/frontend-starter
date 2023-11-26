@@ -5,29 +5,18 @@ import { CopyButton } from "./copy-button";
 type CodeBlockProps = Omit<React.ComponentProps<typeof Box>, "children"> & {
   code?: string,
   language?: string,
-  codeProps?: React.ComponentProps<typeof Code>,
-  mdxPreProps?: React.ComponentProps<'pre'>,
-  theme?: "auto" | "dark" | "light",
-  disableBorder?: boolean,
   lineNumbers?: boolean,
+  theme?: "auto" | "dark" | "light",
+  codeProps?: React.ComponentProps<typeof Code>,
+  disableBorder?: boolean,
 };
 
 export function CodeBlock(props: CodeBlockProps) {
-  const {code, language, codeProps, lineNumbers, mdxPreProps, theme = "auto", disableBorder, ...boxProps} = props;
+  const {code, language, codeProps, lineNumbers, theme = "auto", disableBorder, ...boxProps} = props;
 
   let additionalCodeProps: React.ComponentProps<typeof Code> = {};
-  const child: any = mdxPreProps?.children;
-  const codeNodeProps = typeof child === "string" ? mdxPreProps : child?.props;
-  const classes: string[] = codeNodeProps?.className?.split(' ') ?? [];
-  let parsedLanguage = language ?? classes.find((c: string) => c.startsWith('language-'))?.substring(9);
-  if (parsedLanguage?.startsWith('#')) {
-    parsedLanguage = parsedLanguage.substring(1);
-    additionalCodeProps.lineNumbers = true;
-  }
-  if (parsedLanguage) {
-    additionalCodeProps.lang = parsedLanguage;
-  }
-  additionalCodeProps.code = code ?? `${codeNodeProps?.children}`.replace(/\n$/, '');
+  additionalCodeProps.lang = language ?? "";
+  additionalCodeProps.code = code ?? "";
 
   const themeObject = {
     dark: "dracula",

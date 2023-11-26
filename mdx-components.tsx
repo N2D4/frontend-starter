@@ -7,6 +7,7 @@ import { QuoteBlock } from '@/components/quote-block';
 import { SmartLink } from '@/components/smart-link';
 import { Box, Checkbox, Divider, Stack, Table, Typography } from '@mui/joy';
 import type { MDXComponents } from 'mdx/types';
+import React from 'react';
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -91,11 +92,27 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: (props) => (
       <QuoteBlock {...props as {}} />
     ),
-    pre: (props) => (
-      <Paragraph body>
-        <CodeBlock mdxPreProps={props} />
-      </Paragraph>
-    ),
+    pre: (props) => {
+      const additionalProps: Partial<React.ComponentProps<typeof CodeBlock>> = {};
+      const child: any = props?.children;
+      const codeNodeProps = typeof child === "string" ? props : child?.props;
+      const classes: string[] = codeNodeProps?.className?.split(' ') ?? [];
+      let parsedLanguage = classes.find((c: string) => c.startsWith('language-'))?.substring(9);
+      if (parsedLanguage?.startsWith('#')) {
+        parsedLanguage = parsedLanguage.substring(1);
+        additionalProps.lineNumbers = true;
+      }
+      if (parsedLanguage) {
+        additionalProps.language = parsedLanguage;
+      }
+      additionalProps.code = `${codeNodeProps?.children}`.replace(/\n$/, '');    
+
+      return (
+        <Paragraph body>
+          <CodeBlock {...additionalProps} />
+        </Paragraph>
+      );
+    },
     code: (props) => (
       <InlineCode {...props as {}} />
     ),

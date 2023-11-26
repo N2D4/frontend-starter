@@ -3,11 +3,12 @@
 import { AsyncIconButton } from "@/components/async-icon-button";
 import { Icon } from "@/components/icon";
 import { wait } from "@/utils/promises";
+import { Box } from "@mui/joy";
 
 export function WaitABit() {
   return (
-    <>
-    Click this icon button:
+    <Box>
+      Click this button!<br />
       <AsyncIconButton
         onClick={async () => {
           await wait(5_000);
@@ -16,6 +17,6 @@ export function WaitABit() {
       >
         <Icon icon="alarm" />
       </AsyncIconButton>
-    </>
+    </Box>
   );
 }
