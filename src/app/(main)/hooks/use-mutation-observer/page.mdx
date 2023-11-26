@@ -4,3 +4,15 @@ export const metadata = {
 
 
 # {metadata.title}
+
+Creates a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) that calls a callback when the DOM of the observed element changes. 
+
+## Arguments \{#arguments}
+
+- `targetRef`: A React ref to the element to observe.
+- `callback`: A function to be called on mutation. Additionally, it will be called immediately with the `init` argument whenever a new MutationObserver is created.
+- `options`: A MutationObserverInit object, as defined by the [MutationObserver.observe function](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe).
+
+## Returns \{#returns}
+
+No return value.

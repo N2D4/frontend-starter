@@ -56,9 +56,6 @@ export function Sidebar(props: SheetProps & {
           <NavigationItem href="/hooks/use-animation-frame" onCloseSidebar={onCloseSidebar}>
             useAnimationFrame
           </NavigationItem>
-          <NavigationItem href="/hooks/use-intersection-observer" onCloseSidebar={onCloseSidebar}>
-            useIntersectionObserver
-          </NavigationItem>
           <NavigationItem href="/hooks/use-mutation-observer" onCloseSidebar={onCloseSidebar}>
             useMutationObserver
           </NavigationItem>

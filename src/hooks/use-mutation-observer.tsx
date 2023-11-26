@@ -1,23 +1,23 @@
-import { MutableRefObject, RefObject, useCallback, useEffect } from "react";
+import { RefObject, useEffect, useRef } from "react";
 
 export function useMutationObserver(
   targetRef: RefObject<Node>,
-  /**
-   * Make sure to memoize the callback with useCallback.
-   */
   callback: (mutations: MutationRecord[] | "init") => void,
   options: MutationObserverInit,
 ) {
   const { ...observerOptions } = options;
   const observerOptionsStringified = JSON.stringify(observerOptions);
 
+  const callbackRef = useRef(callback);
+  callbackRef.current = callback;
+
   useEffect(() => {
     if (targetRef?.current !== null) {
-      const observer = new MutationObserver(callback);
+      const observer = new MutationObserver(callbackRef.current);
       const observerOptionsParsed = JSON.parse(observerOptionsStringified);
       observer.observe(targetRef.current, observerOptionsParsed);
-      callback("init");
+      callbackRef.current("init");
       return () => observer.disconnect();
     }
-  }, [targetRef, callback, observerOptionsStringified]);
+  }, [targetRef, observerOptionsStringified]);
 }
