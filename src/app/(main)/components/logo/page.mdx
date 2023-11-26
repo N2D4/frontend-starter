@@ -1,5 +1,26 @@
+import { LogoExample } from "./examples";
+
 export const metadata = {
   title: "Logo",
 };
 
+
 # {metadata.title}
+
+Formats an inline piece of text as monospace and lets the user copy it by clicking.
+
+## Props \{#props}
+
+The same as the [`SmartImage`](/components/smart-image) component, except that the `src` and `alt` props are not required, and:
+
+- `full` (boolean): Whether to show the full logo or just the icon.
+
+## Examples \{#examples}
+
+### Icon logo \{#normal-logo}
+
+<LogoExample />
+
+### Full logo \{#full-logo}
+
+<LogoExample full />

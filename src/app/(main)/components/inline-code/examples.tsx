@@ -7,7 +7,7 @@ export function CodeWithinAParagraphExample() {
   return (
     <ExampleCard code={codeWithinAParagraphCode} language="tsx">
       <Paragraph body>
-        This is a paragraph with <InlineCode>some monospace code</InlineCode>, that you can click on.
+        This is a paragraph with <InlineCode>some monospace code</InlineCode> that you can click on.
       </Paragraph>
     </ExampleCard>
   );
