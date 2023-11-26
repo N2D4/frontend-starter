@@ -6,7 +6,9 @@ export function SimpleCodeBlockExample() {
   return (
     <ExampleCard code={simpleCodeBlockCode} language="tsx">
       <CodeBlock
+        theme="inverted"
         language="python"
+        lineNumbers
         code={deindent`
           def fib(n):
             if n <= 1:
@@ -21,7 +23,9 @@ export function SimpleCodeBlockExample() {
 
 const simpleCodeBlockCode = deindent`
   <CodeBlock
+    theme="inverted"
     language="python"
+    lineNumbers
     code="..."
   />
 `;

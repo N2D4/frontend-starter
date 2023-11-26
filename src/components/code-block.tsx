@@ -1,12 +1,13 @@
 import { Box } from "@mui/joy";
 import { Code } from "bright";
 import { CopyButton } from "./copy-button";
+import { typedIncludes } from "@/utils/arrays";
 
 type CodeBlockProps = Omit<React.ComponentProps<typeof Box>, "children"> & {
   code?: string,
   language?: string,
   lineNumbers?: boolean,
-  theme?: "auto" | "dark" | "light",
+  theme?: "auto" | "dark" | "light" | "inverted",
   codeProps?: React.ComponentProps<typeof Code>,
   disableBorder?: boolean,
 };
@@ -19,11 +20,14 @@ export function CodeBlock(props: CodeBlockProps) {
   additionalCodeProps.code = code ?? "";
 
   const themeObject = {
-    dark: "dracula",
-    light: "light-plus",
-    lightSelector: '[data-joy-color-scheme="light"]',
+    dark: theme === "inverted" ? "light-plus" : "dracula", 
+    light: theme === "inverted" ? "dracula" : "light-plus",
+    lightSelector: `[data-joy-color-scheme="light"]`,
   } as const;
-  const themeVar = theme === "auto" ? themeObject : themeObject[theme];
+  const themeVar =
+    typedIncludes(["dark", "light"] as const, theme)
+      ? themeObject[theme]
+      : themeObject;
 
   return (
     <Box
