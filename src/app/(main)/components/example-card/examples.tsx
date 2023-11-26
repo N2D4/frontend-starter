@@ -11,7 +11,7 @@ export function DifferentCodeAndOutput() {
             return "This code could be anything; it's not actually run."
         `}
       >
-        The code and output don't need to align; in fact, quite often they don't!
+        The code and output don&apos;t need to align; in fact, quite often they don&apos;t!
       </ExampleCard>
     </ExampleCard>
   );

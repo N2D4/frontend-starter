@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@mui/joy";
-import type { MaterialSymbolName } from "./material-symbol-names";
+import { allMaterialSymbolNames, type MaterialSymbolName } from "./material-symbol-names";
 
 type PropsWithoutBase = {
   icon: MaterialSymbolName,
@@ -10,7 +10,10 @@ type PropsWithoutBase = {
   size?: number | string,
 };
 
-export function Icon(props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithoutBase | "children">) {
+export const Icon: {
+  (props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithoutBase | "children">): JSX.Element,
+  allIcons: Set<MaterialSymbolName>,
+} = (props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithoutBase | "children">) => {
   let { icon, fill, weight, grade, opticalSize, size, ...boxProps } = props;
   if (typeof size === "number") {
     opticalSize ??= size;
@@ -37,4 +40,5 @@ export function Icon(props: PropsWithoutBase & Omit<BoxProps, keyof PropsWithout
       {icon}
     </Box>
   );
-}
+};
+Icon.allIcons = new Set(allMaterialSymbolNames);

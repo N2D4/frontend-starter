@@ -3,7 +3,7 @@ export type MaterialSymbolName = typeof allMaterialSymbolNames[number];
 /**
  * Updated Nov 19th, 2023, from https://raw.githubusercontent.com/google/material-design-icons/master/update/current_versions.json
  */
-const allMaterialSymbolNames = [
+export const allMaterialSymbolNames = [
   '10k',
   '10mp',
   '11mp',

@@ -12,7 +12,7 @@ export function MovingBallExample() {
 
 
 export const movingBallCode = deindent`
-  export function MovingBall() {
+  function MovingBall() {
     // Note: Translating a ball like this is considered
     // bad practice in React. We shouldn't modify the DOM
     // directly, but it's just for demo

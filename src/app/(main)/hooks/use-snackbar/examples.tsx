@@ -13,7 +13,7 @@ export function SuccessOrErrorExample() {
 
 
 const successOrErrorCode = deindent`
-  export function SuccessOrError() {
+  function SuccessOrError() {
     const snackbar = useSnackbar();
 
     return (
@@ -46,7 +46,7 @@ export function ComplexCustomizedSnackbarExample() {
 }
 
 const complexCustomizedSnackbarCode = deindent`
-  export function ComplexCustomizedSnackbar() {
+  function ComplexCustomizedSnackbar() {
     const snackbar = useSnackbar();
 
     return (
