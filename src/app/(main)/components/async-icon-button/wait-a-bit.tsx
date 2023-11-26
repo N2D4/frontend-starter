@@ -8,8 +8,8 @@ import { Box } from "@mui/joy";
 export function WaitABit() {
   return (
     <Box>
-      Click this button!<br />
       <AsyncIconButton
+        variant="outlined"
         onClick={async () => {
           await wait(5_000);
           alert("You waited 5 seconds!");

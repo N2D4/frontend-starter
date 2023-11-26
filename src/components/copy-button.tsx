@@ -6,7 +6,6 @@ import { useSnackbar } from "@/hooks/use-snackbar";
 
 type PropsWithoutBase = {
   content: string,
-  onClick?: undefined,
 };
 type Props = PropsWithoutBase & Omit<React.ComponentProps<typeof AsyncIconButton>, keyof PropsWithoutBase>;
 
@@ -16,7 +15,8 @@ export function CopyButton(props: Props) {
   return (
     <AsyncIconButton
       {...props}
-      onClick={async () => {
+      onClick={async (...args) => {
+        await props.onClick?.(...args);
         try {
           await navigator.clipboard.writeText(props.content);
           snackbar.showSuccess('Copied to clipboard!');
