@@ -1,0 +1,31 @@
+import { ImageWithoutGivenWidthExample } from "./examples";
+
+export const metadata = {
+  title: "SmartImage",
+};
+
+
+# {metadata.title}
+
+An image component with more features and better defaults that [`next/image`](https://nextjs.org/docs/pages/api-reference/components/image).
+
+This should be used instead of `next/image` and `<img>` in all cases.
+
+Notably, if you configured a `basePath` other than the root in `next.config.js`, this component will automatically prepend it to the `src` prop.
+
+## Props \{#props}
+
+The same as [`next/image`](https://nextjs.org/docs/pages/api-reference/components/image) component, as well as:
+
+- `disableStrictCLS`: Disables the Next.js CLS error. Particularly, this means you can not pass `width` and `height` even if the import is not static, and the component will behave like a normal `<img>` would. Note that this is frowned upon as it causes [cumulative layout shift](https://web.dev/articles/cls).<br />
+    ![Hawaii missile warning meme|320x182](/hawaii-missile-warning-meme.gif)
+
+## Examples \{#examples}
+
+### Image without given width \{#image-without-given-width}
+
+<ImageWithoutGivenWidthExample />
+
+## See also \{#see-also}
+
+- [`next/image`](https://nextjs.org/docs/pages/api-reference/components/image)

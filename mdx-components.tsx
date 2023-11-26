@@ -1,6 +1,6 @@
 import { CodeBlock } from '@/components/code-block';
 import { Enumeration, EnumerationItem } from '@/components/enumeration';
-import { Image } from '@/components/image';
+import { SmartImage } from '@/components/smart-image';
 import { InlineCode } from '@/components/inline-code';
 import { Paragraph } from '@/components/paragraph';
 import { QuoteBlock } from '@/components/quote-block';
@@ -46,7 +46,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const { alt, ...imageProps } = props;
       const regexResult = alt?.match(/(.*)\|([0-9]*)x([0-9]*)$/);
       return (
-        <Image
+        <SmartImage
           alt={regexResult?.[1] ?? alt ?? ""}
           width={regexResult?.[2] ? parseInt(regexResult[2]) : undefined}
           height={regexResult?.[3] ? parseInt(regexResult[3]) : undefined}

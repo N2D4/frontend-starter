@@ -1,7 +1,6 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import NextImage, { ImageProps as NextImageProps } from "next/image";
 
-export function Image(props: NextImageProps & { disableStrictCLS?: boolean }) {
+export function SmartImage(props: NextImageProps & { disableStrictCLS?: boolean }) {
   const basePath = process.env.__NEXT_ROUTER_BASEPATH || "";
 
   const { src, width, height, disableStrictCLS, ...nextImageProps } = props;
@@ -11,6 +10,7 @@ export function Image(props: NextImageProps & { disableStrictCLS?: boolean }) {
   }
 
   return (
+    // eslint-disable-next-line react/forbid-elements
     <NextImage
       width={width ?? (disableStrictCLS ? 16 : undefined)}
       height={height ?? (disableStrictCLS ? 16 : undefined)}

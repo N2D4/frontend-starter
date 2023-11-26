@@ -11,6 +11,16 @@ module.exports = {
   "rules": {
     "indent": ["warn", 2],
     "semi": ["error", "always"],
-    "@typescript-eslint/no-floating-promises": "error"
+    "@typescript-eslint/no-floating-promises": "error",
+    "react/forbid-elements": ["error", {
+      "forbid": [
+        { "element": "button", "message": "use <AsyncButton> instead" },
+        { "element": "p", "message": "use <Paragraph> instead" },
+        { "element": "img", "message": "use <SmartImage> instead" },
+        { "element": "a", "message": "use <SmartLink> instead" },
+        { "element": "Image", "message": "use <SmartImage> instead" },
+        { "element": "NextImage", "message": "use <SmartImage> instead" },
+      ],
+    }],
   }
 };

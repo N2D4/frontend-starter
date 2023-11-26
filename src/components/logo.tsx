@@ -3,9 +3,9 @@ import logoFullLightMode from "../../public/logo-full.png";
 import logoDarkMode from "../../public/logo-bright.png";
 import logoFullDarkMode from "../../public/logo-full-bright.png";
 import { Link } from "@mui/joy";
-import { Image } from "./image";
+import { SmartImage } from "./smart-image";
 
-type ImageProps = React.ComponentProps<typeof Image>;
+type ImageProps = React.ComponentProps<typeof SmartImage>;
 
 export function Logo(props: (ImageProps | Omit<ImageProps, "src" | "alt">) & { full?: boolean }) {
   const { full, ...imageProps } = props;
@@ -28,7 +28,7 @@ export function Logo(props: (ImageProps | Omit<ImageProps, "src" | "alt">) & { f
             },
           }}
         >
-          <Image
+          <SmartImage
             src={mode[1]}
             alt="Logo"
             priority

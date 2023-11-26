@@ -85,9 +85,6 @@ export function Sidebar(props: SheetProps & {
           <NavigationItem href="/components/icon" onCloseSidebar={onCloseSidebar}>
             Icon
           </NavigationItem>
-          <NavigationItem href="/components/image" onCloseSidebar={onCloseSidebar}>
-            Image
-          </NavigationItem>
           <NavigationItem href="/components/inline-code" onCloseSidebar={onCloseSidebar}>
             InlineCode
           </NavigationItem>
@@ -105,6 +102,9 @@ export function Sidebar(props: SheetProps & {
           </NavigationItem>
           <NavigationItem href="/components/quote-block" onCloseSidebar={onCloseSidebar}>
             QuoteBlock
+          </NavigationItem>
+          <NavigationItem href="/components/smart-image" onCloseSidebar={onCloseSidebar}>
+            SmartImage
           </NavigationItem>
           <NavigationItem href="/components/smart-link" onCloseSidebar={onCloseSidebar}>
             SmartLink
