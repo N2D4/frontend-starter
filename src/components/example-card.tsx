@@ -4,11 +4,11 @@ import { CodeBlock } from "./code-block";
 export function ExampleCard(props: CardProps & {
   expandContent?: boolean,
   code: string,
-  language: string,
-  codeProps?: React.ComponentProps<typeof CodeBlock>,
+  language?: string,
+  codeBlockProps?: React.ComponentProps<typeof CodeBlock>,
   children: React.ReactNode,
 }) {
-  const { expandContent, code, language, children, ...otherProps } = props;
+  const { expandContent, code, language, children, codeBlockProps, ...otherProps } = props;
 
   return (
     <Card
@@ -40,7 +40,7 @@ export function ExampleCard(props: CardProps & {
           lineNumbers
           code={code}
           language={language}
-          {...props.codeProps}
+          {...codeBlockProps}
         />
       </CardOverflow>
     </Card>

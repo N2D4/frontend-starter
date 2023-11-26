@@ -1,6 +1,30 @@
+import { DifferentCodeAndOutput } from "./examples";
+
 export const metadata = {
   title: "ExampleCard",
 };
 
 
 # {metadata.title}
+
+A card showing code and its output, useful for documentation pages.
+
+**Note**: This component is only supported as a React Server Component, meaning it can *not* be re-rendered on the client.
+
+## Props \{#props}
+
+The same as Joy UI's [Card](/components/card) component, as well as:
+
+- `children`: The output content to display in the card.
+- `expandContent`: Whether to expand the output content to the card border by default. Defaults to `false`.
+- `code`: The code to display.
+- `language`: The language of the code. Defaults to no syntax highlighting.
+- `codeBlockProps`: Optional additional props to pass to the [CodeBlock](/components/code-block) component.
+
+
+## Examples \{#examples}
+
+### Different code & output \{#different-code-and-output}
+
+<DifferentCodeAndOutput />
+

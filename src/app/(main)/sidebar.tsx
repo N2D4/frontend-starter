@@ -79,6 +79,9 @@ export function Sidebar(props: SheetProps & {
           <NavigationItem href="/components/enumeration" onCloseSidebar={onCloseSidebar}>
             Enumeration
           </NavigationItem>
+          <NavigationItem href="/components/example-card" onCloseSidebar={onCloseSidebar}>
+            ExampleCard
+          </NavigationItem>
           <NavigationItem href="/components/icon" onCloseSidebar={onCloseSidebar}>
             Icon
           </NavigationItem>
