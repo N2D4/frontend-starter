@@ -20,6 +20,7 @@ module.exports = {
         { "element": "a", "message": "use <SmartLink> instead" },
         { "element": "Image", "message": "use <SmartImage> instead" },
         { "element": "NextImage", "message": "use <SmartImage> instead" },
+        { "element": "code", "message": "use <InlineCode> instead" },
       ],
     }],
   }
