@@ -2,7 +2,6 @@
 
 import { typedIncludes } from "@/utils/arrays";
 import React, { use } from "react";
-import { Paragraph } from "./paragraph";
 import { Box, Checkbox, Stack, Typography } from "@mui/joy";
 
 const enumerationContext = React.createContext<{ type: EnumerationProps["type"] } | null>(null);
@@ -12,12 +11,13 @@ const ulProps = ["bulleted", "checklist"] as const;
 
 
 type EnumerationProps = 
-  | (React.ComponentProps<"ol"> & {
-    type: typeof olProps[number];
-  })
-  | (React.ComponentProps<"ul"> & {
-    type: typeof ulProps[number];
-  })
+  & {
+    type: typeof olProps[number] | typeof ulProps[number],
+  }
+  & (
+    | React.ComponentProps<"ol">
+    | React.ComponentProps<"ul">
+  );
 
 export function Enumeration(props: EnumerationProps) {
   const { type, ...listProps } = props;
@@ -46,14 +46,14 @@ type EnumerationItemProps = React.ComponentProps<"li"> & (
   }
   | {
     type: "checklist",
-    checked: boolean,
+    checked?: boolean,
   }
 );
 
 export function EnumerationItem(props: EnumerationItemProps) {
   const enumeration = use(enumerationContext);
 
-  let { type, children, ...listItemProps } = props;
+  let { type, checked, children, ...listItemProps } = props as EnumerationItemProps & { checked?: boolean };
   type ??= enumeration?.type;
 
 
@@ -84,7 +84,7 @@ export function EnumerationItem(props: EnumerationItemProps) {
           >
             <Checkbox
               readOnly
-              checked={!!(props as any).checked}
+              checked={!!checked}
               sx={{
                 paddingInlineStart: "16px",
                 pointerEvents: "none",
