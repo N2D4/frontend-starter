@@ -91,13 +91,5 @@ export function deindent(strings: string | readonly string[], ...values: any[]):
     return `${value}`.replaceAll("\n", `\n${firstLineIndentation}`);
   });
 
-  console.log({
-    strings,
-    trimmedStrings,
-    indentation,
-    deindentedStrings,
-    indentedValues,
-  });
-
   return templateIdentity(deindentedStrings, ...indentedValues);
 }

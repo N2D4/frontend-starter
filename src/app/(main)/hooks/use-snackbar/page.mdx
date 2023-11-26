@@ -1,6 +1,34 @@
+import { SuccessOrErrorExample, ComplexCustomizedSnackbarExample } from "./examples";
+
 export const metadata = {
   title: "useSnackbar",
 };
 
 
 # {metadata.title}
+
+Helper hook to show a [Joy UI Snackbar](https://mui.com/joy-ui/react-snackbar/).
+
+Also includes the SnackbarProvider component, which needs to be mounted on the page.
+
+## Arguments \{#arguments}
+
+No arguments.
+
+## Returns \{#returns}
+
+A Snackbar object with the following fields:
+
+- `show`: A function that shows a snackbar, taking as only argument a [list of props](https://mui.com/joy-ui/api/snackbar/#props) to pass to the Snackbar component.
+- `showSuccess`: A function that shows a snackbar with a default success styling, taking a ReactNode (often a string) as argument.
+- `showError`: A function that shows a snackbar with a default error styling, taking a ReactNode (often a string) as argument.
+
+## Examples \{#examples}
+
+### Success or Error \{#success-or-error}
+
+<SuccessOrErrorExample />
+
+### Complex Customized Snackbar
+
+<ComplexCustomizedSnackbarExample />
