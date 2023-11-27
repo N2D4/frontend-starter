@@ -21,6 +21,7 @@ export function Header(props: SheetProps & {
         paddingX: 2,
         position: 'sticky',
         top: 0,
+        zIndex: 30,
         borderTop: 'none',
         borderLeft: 'none',
         borderRight: 'none',

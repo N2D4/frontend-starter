@@ -1,18 +1,36 @@
 import { ExampleCard } from "@/components/example-card";
 import { deindent } from "@/utils/strings";
-import { Paragraph } from "@/components/paragraph";
-import { InlineCode } from "@/components/inline-code";
-import { Logo } from "@/components/logo";
 import { PageLoadingCheckbox } from "./page-loading-checkbox";
 
 export function PageLoadingCheckboxExample() {
   return (
-    <ExampleCard code={pageLoadingCheckboxCode} language="tsx">
+    <ExampleCard
+      code={pageLoadingCheckboxCode}
+      language="tsx"
+      sx={{
+        "& > .MuiCardContent-root": {
+          zIndex: "unset",
+        },
+      }}
+    >
       <PageLoadingCheckbox />
     </ExampleCard>
   );
 }
 
 const pageLoadingCheckboxCode = deindent`
-  <Logo height={64} />
+  function PageLoadingCheckbox() {
+    const [isLoading, setIsLoading] = useState(false);
+
+    return (
+      <>
+        <Checkbox
+          label="Show loading indicator"
+          checked={isLoading}
+          onChange={(e) => setIsLoading(e.target.checked)}
+        />
+        {isLoading && <PageLoadingIndicator />}
+      </>
+    );
+  }
 `;
