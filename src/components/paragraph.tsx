@@ -74,6 +74,7 @@ export function Paragraph(props: ParagraphProps) {
       display="block"
       {...typographyProps}
       sx={{
+        overflowX: 'auto',
         ...typeInfo[level].style,
         ...typographyProps.sx,
       }}
@@ -90,23 +91,20 @@ export function Paragraph(props: ParagraphProps) {
           },
         }}
         endDecorator={level.startsWith('h') && typographyProps.id ? (
-          <Box display="inline" position="relative">
-            <SmartLink
-              position="absolute"
-              href={`#${typographyProps.id}`}
-              alignSelf="end"
-              sx={{
-                color: 'text.tertiary',
-                fontWeight: 'normal',
-                textUnderlineOffset: '0',
-                ':hover': {
-                  color: 'text.primary',
-                },
-              }}
-            >
-              <Icon icon="link" />
-            </SmartLink>
-          </Box>
+          <SmartLink
+            href={`#${typographyProps.id}`}
+            alignSelf="end"
+            sx={{
+              color: 'text.tertiary',
+              fontWeight: 'normal',
+              textUnderlineOffset: '0',
+              ':hover': {
+                color: 'text.primary',
+              },
+            }}
+          >
+            <Icon icon="link" sx={{ verticalAlign: "bottom" }} />
+          </SmartLink>
         ) : undefined}
       >
         {children}

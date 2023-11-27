@@ -56,13 +56,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     table: (props) => (
-      <Table {...props as {}} sx={{
-        tableLayout: 'auto',
-        width: 'auto',
-        '& th': {
-          backgroundColor: 'transparent',
-        },
-      }}/>
+      <Paragraph body>
+      <Table
+        {...props as {}}
+        sx={{
+          tableLayout: 'auto',
+          width: 'auto',
+          '& th': {
+            backgroundColor: 'transparent',
+          },
+        }}
+      />
+      </Paragraph>
     ),
     ul: (props) => (
       <Enumeration

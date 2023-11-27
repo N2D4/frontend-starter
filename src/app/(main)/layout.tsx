@@ -27,6 +27,9 @@ export default function Layout(props: { children: React.ReactNode }) {
           inset: 0,
           overflowY: 'auto',
           scrollPaddingTop: `${headerHeight}px`,
+          [theme.breakpoints.down("sm")]: {
+            hyphens: 'auto',
+          },
         }}
       >
         <Header
