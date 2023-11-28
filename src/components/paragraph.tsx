@@ -1,7 +1,6 @@
 import { Box, Typography, TypographyProps } from "@mui/joy";
 import { SmartLink } from "./smart-link";
 import { Icon } from "./icon";
-import { typedIncludes } from "@/utils/arrays";
 
 const typeInfo = {
   body: {
@@ -16,7 +15,7 @@ const typeInfo = {
       marginY: 2,
     },
     component: Box,
-    level: undefined,
+    level: "body-xs",
   },
   h1: {
     style: {

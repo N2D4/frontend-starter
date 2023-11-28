@@ -1,6 +1,24 @@
+import { BlockTextExample } from "./examples";
+
 export const metadata = {
   title: "Paragraph",
 };
 
 
 # {metadata.title}
+
+A paragraph or title of text.
+
+If this paragraph is a heading (using one of the `h#` properties), and it has an ID, it will receive a "link" button on hover that will navigate to that heading.
+
+## Props \{#props}
+
+The same as Joy UI's [Typography](https://mui.com/joy-ui/react-button/) component, as well as:
+
+- `body` or `sidenote` or `h1` or `h2` or `h3` or `h4` or `h5` or `h6` - A boolean that indicates whether the text is a body or a sidenote or a heading.
+
+## Examples \{#examples}
+
+### Block text \{#toc-generation}
+
+<BlockTextExample />
