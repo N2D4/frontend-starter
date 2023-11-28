@@ -11,14 +11,16 @@ A paragraph or title of text.
 
 If this paragraph is a heading (using one of the `h#` properties), and it has an ID, it will receive a "link" button on hover that will navigate to that heading.
 
+In many cases, this can replace Joy UI's [Typography](https://mui.com/joy-ui/react-typography/) component, however, you may still use Typography for purposes not served by this component.
+
 ## Props \{#props}
 
-The same as Joy UI's [Typography](https://mui.com/joy-ui/react-button/) component, as well as:
+The same as Joy UI's [Typography](https://mui.com/joy-ui/react-typography/) component, as well as:
 
-- `body` or `sidenote` or `h1` or `h2` or `h3` or `h4` or `h5` or `h6` - A boolean that indicates whether the text is a body or a sidenote or a heading.
+- `body` or `sidenote` or `box` or `h1` or `h2` or `h3` or `h4` or `h5` or `h6`: A boolean that indicates whether the text is a body or a sidenote or a heading. The special value `block` can be used for more complex layouts where a margin is not wanted (eg. flexbox children in custom layouts), similar to Joy UI's [Box](https://mui.com/joy-ui/react-box/) or HTML `<div>`.
 
 ## Examples \{#examples}
 
-### Block text \{#toc-generation}
+### Block text \{#block-text}
 
 <BlockTextExample />

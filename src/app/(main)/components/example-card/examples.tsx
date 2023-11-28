@@ -1,5 +1,7 @@
 import { ExampleCard } from "@/components/example-card";
+import { Paragraph } from "@/components/paragraph";
 import { deindent } from "@/utils/strings";
+import { Typography } from "@mui/joy";
 
 export function DifferentCodeAndOutput() {
   return (
@@ -11,7 +13,9 @@ export function DifferentCodeAndOutput() {
             return "This code could be anything; it's not actually run."
         `}
       >
-        The code and output don&apos;t need to align; in fact, quite often they don&apos;t!
+        <Paragraph box>
+          The code and output don&apos;t need to align; in fact, quite often they don&apos;t!
+        </Paragraph>
       </ExampleCard>
     </ExampleCard>
   );
@@ -25,6 +29,8 @@ const differentCodeAndOutputCode = deindent`
         return "This code could be anything; it's not actually run."
     \`}
   >
-    The code and output don't need to align; in fact, quite often they don't!
+    <Paragraph box>
+      The code and output don&apos;t need to align; in fact, quite often they don&apos;t!
+    </Paragraph>
   </ExampleCard>
 `;

@@ -41,6 +41,24 @@ export default function ThemeProvider(props: { children: React.ReactNode }) {
           },
         },
       },
+
+      JoyCard: {
+        styleOverrides: {
+          root: {
+            // don't override font so the user still has to use Paragraph or Typography
+            fontFamily: "inherit",
+          },
+        },
+      },
+
+      JoySheet: {
+        styleOverrides: {
+          root: {
+            // don't override font so the user still has to use Paragraph or Typography
+            fontFamily: "inherit",
+          },
+        },
+      },
     },
   });
 

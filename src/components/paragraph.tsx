@@ -3,6 +3,11 @@ import { SmartLink } from "./smart-link";
 import { Icon } from "./icon";
 
 const typeInfo = {
+  box: {
+    style: {},
+    component: Box,
+    level: undefined,
+  },
   body: {
     style: {
       marginY: 2,

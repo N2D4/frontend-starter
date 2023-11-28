@@ -1,7 +1,8 @@
 import { ExampleCard } from "@/components/example-card";
+import { Paragraph } from "@/components/paragraph";
 import { SmartImage } from "@/components/smart-image";
 import { deindent } from "@/utils/strings";
-import { Stack } from "@mui/joy";
+import { Stack, Typography } from "@mui/joy";
 
 export function ImageWithoutGivenWidthExample() {
   return (
@@ -12,7 +13,9 @@ export function ImageWithoutGivenWidthExample() {
           src="/logo.png"
           alt="Logo"
         />
-        Note: this text will shift its position as soon as the image loads.
+        <Paragraph box>
+          Note: this text will shift its position as soon as the image loads.
+        </Paragraph>
       </Stack>
     </ExampleCard>
   );
@@ -25,6 +28,8 @@ const iconPlaygroundCode = deindent`
       src="/logo.png"
       alt="Logo"
     />
-    Note: this text will shift its position as soon as the image loads.
-  </Stack>
+    <Paragraph box>
+      Note: this text will shift its position as soon as the image loads.
+    </Paragraph>
+</Stack>
 `;
