@@ -6,7 +6,8 @@ import { Sheet, Stack, IconButton, Box, SheetProps, useColorScheme, colors, Inpu
 import { SiteSearch } from "./site-search";
 import { SmartLink } from "@/components/smart-link";
 import Image from "next/image";
-import GitHubInvertocat from "../../../public/github-invertocat.png";
+import GitHubInvertocatWhite from "../../../public/github-invertocat-white.svg";
+import GitHubInvertocat from "../../../public/github-invertocat.svg";
 
 export function Header(props: SheetProps & {
   isCompactMediaQuery: string,
@@ -56,9 +57,30 @@ export function Header(props: SheetProps & {
         <Box flexGrow={1} />
         <SmartLink href="https://github.com/N2D4/frontend-starter" hideExternalIndicator>
           <Box
-            width={24}
-            height={24}
+            width={32}
+            height={32}
             position="relative"
+            sx={{
+              'html[data-joy-color-scheme="light"] &': {
+                display: 'none',
+              }
+            }}
+          >
+            <Image
+              src={GitHubInvertocatWhite}
+              alt="GitHub repository"
+              fill
+            />
+          </Box>
+          <Box
+            width={32}
+            height={32}
+            position="relative"
+            sx={{
+              'html:not([data-joy-color-scheme="light"]) &': {
+                display: 'none',
+              }
+            }}
           >
             <Image
               src={GitHubInvertocat}
