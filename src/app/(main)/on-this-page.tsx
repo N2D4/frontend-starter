@@ -22,6 +22,10 @@ export function OnThisPage(props: StackProps & { overview: Overview, screenOffse
     return () => window.removeEventListener('scroll', callback, true);
   }, []);
 
+  const isSectionIncluded = (section: Overview["sections"][number]) => {
+    return !section.element.classList.contains("n2-ignore-on-this-page");
+  };
+
   const recursiveSectionsOverview = useMemo(() => {
     const res: Overview["sections"][number][] = [];
     const addSection = (section: Overview["sections"][number]) => {
@@ -33,7 +37,7 @@ export function OnThisPage(props: StackProps & { overview: Overview, screenOffse
     for (const section of overview.sections) {
       addSection(section);
     }
-    return res;
+    return res.filter(isSectionIncluded);
   }, [overview]);
 
   
@@ -73,7 +77,7 @@ export function OnThisPage(props: StackProps & { overview: Overview, screenOffse
           <ListSubheader sticky>
           On this page
           </ListSubheader>
-          {overview.sections.map((section, i) => (
+          {overview.sections.filter(isSectionIncluded).map((section, i) => (
             <Section
               key={section.id}
               section={section}

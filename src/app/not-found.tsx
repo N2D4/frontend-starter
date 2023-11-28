@@ -1,13 +1,13 @@
 "use client";
 
-import { InlineCode } from "@/components/inline-code";
 import { Logo } from "@/components/logo";
 import { Paragraph } from "@/components/paragraph";
 import { SmartLink } from "@/components/smart-link";
+import { useIsHydrated } from "@/hooks/use-is-hydrated";
 import { Box, Sheet, Stack } from "@mui/joy";
 
 export default function NotFound() {
-  const isHydrated = true;
+  const isHydrated = useIsHydrated();
   const customBasePath = process.env.__NEXT_ROUTER_BASEPATH;
   const isDevelopment = process.env.NODE_ENV === "development";
   const showBasePathDisclaimer = isDevelopment && isHydrated && customBasePath && !window.location.pathname.startsWith(customBasePath);

@@ -109,6 +109,9 @@ export function Sidebar(props: SheetProps & {
           <NavigationItem href="/components/smart-link" onCloseSidebar={onCloseSidebar}>
             SmartLink
           </NavigationItem>
+          <NavigationItem href="/components/style-link" onCloseSidebar={onCloseSidebar}>
+            StyleLink
+          </NavigationItem>
         </Folder>
       </List>
     </Sheet>
