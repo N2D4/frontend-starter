@@ -26,7 +26,7 @@ export function InlineCode(props: TypographyProps<"code">) {
         if (!hasClickableParent(e.currentTarget)) {
           e.stopPropagation();
           e.preventDefault();
-          (async () => {
+          void (async () => {
             try {
               await navigator.clipboard.writeText(getNodeText(props.children));
               snackbar.showSuccess('Copied to clipboard!');
