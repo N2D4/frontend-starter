@@ -2,10 +2,9 @@
 
 import { Icon } from "@/components/icon";
 import { Logo } from "@/components/logo";
-import { Sheet, Stack, IconButton, Box, SheetProps, useColorScheme, colors, Input, Button } from "@mui/joy";
+import { Sheet, Stack, IconButton, Box, SheetProps, useColorScheme, colors, Input, Button, useTheme } from "@mui/joy";
 import { SiteSearch } from "./site-search";
 import { SmartLink } from "@/components/smart-link";
-import Image from "next/image";
 import GitHubInvertocatWhite from "../../../public/github-invertocat-white.svg";
 import GitHubInvertocat from "../../../public/github-invertocat.svg";
 import { SmartImage } from "@/components/smart-image";
@@ -15,6 +14,7 @@ export function Header(props: SheetProps & {
   onShowSidebar: () => void,
 }) {
   const colorScheme = useColorScheme();
+  const theme = useTheme();
 
   const { isCompactMediaQuery, onShowSidebar, ...sheetProps } = props;
   return (
@@ -62,7 +62,7 @@ export function Header(props: SheetProps & {
             height={32}
             position="relative"
             sx={{
-              'html[data-joy-color-scheme="light"] &': {
+              [theme.getColorSchemeSelector("light")]: {
                 display: 'none',
               }
             }}
@@ -78,7 +78,7 @@ export function Header(props: SheetProps & {
             height={32}
             position="relative"
             sx={{
-              'html:not([data-joy-color-scheme="light"]) &': {
+              [theme.getColorSchemeSelector("dark")]: {
                 display: 'none',
               }
             }}

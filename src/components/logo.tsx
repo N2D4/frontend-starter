@@ -12,6 +12,7 @@ export function Logo(props: (ImageProps | Omit<ImageProps, "src" | "alt">) & { f
 
   // first item is the selector which HIDES the logo, second is the logo source
   const modes = [
+    // instead of using theme.getColorSchemeSelector, we use this literal to support RSC
     ['html[data-joy-color-scheme="light"] &', full ? logoFullDarkMode : logoDarkMode],
     ['html:not([data-joy-color-scheme="light"]) &', full ? logoFullLightMode : logoLightMode],
   ] as const;
