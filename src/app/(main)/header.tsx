@@ -8,6 +8,7 @@ import { SmartLink } from "@/components/smart-link";
 import Image from "next/image";
 import GitHubInvertocatWhite from "../../../public/github-invertocat-white.svg";
 import GitHubInvertocat from "../../../public/github-invertocat.svg";
+import { SmartImage } from "@/components/smart-image";
 
 export function Header(props: SheetProps & {
   isCompactMediaQuery: string,
@@ -66,7 +67,7 @@ export function Header(props: SheetProps & {
               }
             }}
           >
-            <Image
+            <SmartImage
               src={GitHubInvertocatWhite}
               alt="GitHub repository"
               fill
@@ -82,7 +83,7 @@ export function Header(props: SheetProps & {
               }
             }}
           >
-            <Image
+            <SmartImage
               src={GitHubInvertocat}
               alt="GitHub repository"
               fill
