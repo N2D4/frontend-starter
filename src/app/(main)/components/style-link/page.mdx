@@ -1,0 +1,16 @@
+export const metadata = {
+  title: "StyleLink",
+};
+
+
+# {metadata.title}
+
+Roughly equivalent to `<link rel="stylesheet">`, with some extra features.
+
+## Props \{#props}
+
+The same as HTML `<link>`, except for the following:
+
+- `rel` is not available, as it is always set to `"stylesheet"`.
+- `as` is not available.
+- `defer`: If `true`, the stylesheet will be deferred to load at a later (unspecified) point in time. The current implementation loads the stylesheet only after the page has been hydrated.
