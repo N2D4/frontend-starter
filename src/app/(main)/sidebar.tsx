@@ -45,11 +45,14 @@ export function Sidebar(props: SheetProps & {
           Getting Started
         </NavigationItem>
         <Folder title="Guides">
-          <NavigationItem href="/joy-ui" onCloseSidebar={onCloseSidebar}>
+          <NavigationItem href="/guides/joy-ui" onCloseSidebar={onCloseSidebar}>
             Styling, CSS-in-JS, and Joy UI
           </NavigationItem>
-          <NavigationItem href="/using-mdx" onCloseSidebar={onCloseSidebar}>
+          <NavigationItem href="/guides/using-mdx" onCloseSidebar={onCloseSidebar}>
             Using MDX
+          </NavigationItem>
+          <NavigationItem href="/guides/advanced-concepts" onCloseSidebar={onCloseSidebar}>
+            Advanced Concepts
           </NavigationItem>
         </Folder>
         <Folder title="Hooks">

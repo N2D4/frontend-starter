@@ -30,6 +30,17 @@ export default function ThemeProvider(props: { children: React.ReactNode }) {
         defaultProps: {
           // eslint-disable-next-line react/display-name
           component: React.forwardRef((props, ref) => (<NextLink {...props} ref={ref} />)),
+          ...{
+            "data-n2-clickable": true,
+          } as any,
+        },
+      },
+
+      JoyButton: {
+        defaultProps: {
+          ...{
+            "data-n2-clickable": true,
+          } as any,
         },
       },
 

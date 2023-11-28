@@ -1,0 +1,17 @@
+export const metadata = {
+  title: "Advanced concepts",
+};
+
+
+# {metadata.title}
+
+## Clickable parents \{#clickable-parents}
+
+Usually, in the world of HTML, when you have a nested clickable element inside another clickable element, the inner element takes priority when a user clicks on it. This is not always the desired behavior. There are two options:
+
+- If an outer element wants to prevent this and always take priority over inner elements, it can cancel the event at the capturing phase and then it will never reach the inner element.
+- If an inner element wants to prevent this and always yield priority to the outer element, it can simply not cancel the event at the bubbling phase. However, to do so, it needs to know that it is inside another clickable element.
+
+For this reason, there is a special attribute `data-n2-clickable` that is assigned to some of the clickable elements, most notably Joy UI's [Link](https://mui.com/joy-ui/react-link/) and [Button](https://mui.com/joy-ui/react-button/). If it is set to true for any of the ancestors, then the inner elements knows it can skip processing the event.
+
+Currently, [`InlineCode`](/components/inline-code/) skips its own click event if this is the case. You can use `hasClickableParent` from `src/utils/html` to implement this for your own components.

@@ -11,7 +11,7 @@ export default function Home() {
   // Note: For demonstration purposes, this is a normal .tsx React
   // component, but it could've been written in MDX instead.
   //
-  // See /using-mdx for more details.
+  // See /guides/using-mdx for more details.
 
   return (
     <>
@@ -33,10 +33,10 @@ export default function Home() {
             <b>React + Next.js</b> as a base framework
           </EnumerationItem>
           <EnumerationItem>
-            <b><SmartLink href="/joy-ui">MUI&apos;s Joy UI</SmartLink></b> as a UI library, built on the same backbones as the Material UI library, but with more customizable styling
+            <b><SmartLink href="/guides/joy-ui">MUI&apos;s Joy UI</SmartLink></b> as a UI library, built on the same backbones as the Material UI library, but with more customizable styling
           </EnumerationItem>
           <EnumerationItem>
-            <b><SmartLink href="/using-mdx">MDX</SmartLink></b> for writing content & text-heavy server components
+            <b><SmartLink href="/guides/using-mdx">MDX</SmartLink></b> for writing content & text-heavy server components
           </EnumerationItem>
           <EnumerationItem>
             Several custom hooks, components, and utilities for common tasks
