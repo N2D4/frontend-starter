@@ -1,3 +1,5 @@
+import { remainder } from "./math";
+
 export function typedIncludes<T extends readonly any[]>(arr: T, item: unknown): item is T[number] {
   return arr.includes(item);
 }
@@ -15,6 +17,44 @@ export function groupBy<T extends readonly any[], K>(
     const k = key(item);
     if (result.get(k) === undefined) result.set(k, []);
     result.get(k)!.push(item);
+  }
+  return result;
+}
+
+
+export function range(endExclusive: number): number[];
+export function range(startInclusive: number, endExclusive: number): number[];
+export function range(startInclusive: number, endExclusive: number, step: number): number[];
+export function range(startInclusive: number, endExclusive?: number, step?: number): number[] {
+  if (endExclusive === undefined) {
+    endExclusive = startInclusive;
+    startInclusive = 0;
+  }
+  if (step === undefined) step = 1;
+
+  const result = [];
+  for (let i = startInclusive; step > 0 ? (i < endExclusive) : (i > endExclusive); i += step) {
+    result.push(i);
+  }
+  return result;
+}
+
+
+export function rotateLeft(arr: readonly any[], n: number): any[] {
+  const index = remainder(n, arr.length);
+  return [...arr.slice(n), arr.slice(0, n)];
+}
+
+export function rotateRight(arr: readonly any[], n: number): any[] {
+  return rotateLeft(arr, -n);
+}
+
+
+export function shuffle<T>(arr: readonly T[]): T[] {
+  const result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
   }
   return result;
 }

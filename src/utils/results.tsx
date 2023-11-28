@@ -16,9 +16,32 @@ export type AsyncResult<T, E = unknown, P = void> =
     & (P extends void ? {} : { progress: P });
 
 
+export const Result = {
+  fromPromise: promiseToResult,
+  ok<T>(data: T): Result<T, never> {
+    return {
+      status: "ok",
+      data,
+    };
+  },
+  error<E>(error: E): Result<never, E> {
+    return {
+      status: "error",
+      error,
+    };
+  },
+  map: mapResult,
+  orThrow: <T, E>(result: Result<T, E>): T => {
+    if (result.status === "error") throw result.error;
+    return result.data;
+  },
+  orThrowAsync: async <T, E>(result: Promise<Result<T, E>>): Promise<T> => {
+    return Result.orThrow(await result);
+  }
+};
 
     
-export function promiseToResult<T, E = unknown>(promise: Promise<T>): Promise<Result<T, E>> {
+function promiseToResult<T, E = unknown>(promise: Promise<T>): Promise<Result<T, E>> {
   return promise.then(data => ({
     status: "ok",
     data,
@@ -28,16 +51,10 @@ export function promiseToResult<T, E = unknown>(promise: Promise<T>): Promise<Re
   }));
 }
 
-export function resolvedResult<T, E = unknown>(data: T): Result<T, E> {
-  return {
-    status: "ok",
-    data,
-  };
-}
 
-export function mapResult<T, U, E = unknown, P = unknown>(result: Result<T, E>, fn: (data: T) => U): Result<U, E>;
-export function mapResult<T, U, E = unknown, P = unknown>(result: AsyncResult<T, E, P>, fn: (data: T) => U): AsyncResult<U, E, P>;
-export function mapResult<T, U, E = unknown, P = unknown>(result: AsyncResult<T, E, P>, fn: (data: T) => U): AsyncResult<U, E, P> {
+function mapResult<T, U, E = unknown, P = unknown>(result: Result<T, E>, fn: (data: T) => U): Result<U, E>;
+function mapResult<T, U, E = unknown, P = unknown>(result: AsyncResult<T, E, P>, fn: (data: T) => U): AsyncResult<U, E, P>;
+function mapResult<T, U, E = unknown, P = unknown>(result: AsyncResult<T, E, P>, fn: (data: T) => U): AsyncResult<U, E, P> {
   if (result.status === "error") return {
     status: "error",
     error: result.error,
@@ -47,5 +64,5 @@ export function mapResult<T, U, E = unknown, P = unknown>(result: AsyncResult<T,
     ..."progress" in result ? { progress: result.progress } : {},
   } as any;
 
-  return resolvedResult(fn(result.data));
+  return Result.ok(fn(result.data));
 }

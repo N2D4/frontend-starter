@@ -1,7 +1,14 @@
-export function hasClickableParent(element: HTMLElement): boolean {
-  const parent = element.parentElement;
-  if (!parent) return false;
-  if (parent.dataset.n2Clickable) return true;
+import { templateIdentity } from "./strings";
 
-  return !!element.parentElement && hasClickableParent(element.parentElement);
+export function escapeHtml(unsafe: string): string {
+  return `${unsafe}`
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+export function html(strings: TemplateStringsArray, ...values: any[]): string {
+  return templateIdentity(strings, ...values.map(v => escapeHtml(`${v}`)));
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSnackbar } from "@/hooks/use-snackbar";
-import { hasClickableParent } from "@/utils/html";
+import { hasClickableParent } from "@/utils/dom";
 import { getNodeText } from "@/utils/react";
 import { Typography, TypographyProps } from "@mui/joy";
 import { MouseEvent } from "react";
