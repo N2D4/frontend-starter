@@ -20,7 +20,7 @@ export default function Home() {
       </Paragraph>
 
       <Paragraph body>
-        Welcome to frontend-starter!
+        Welcome to frontend-starter! <SmartLink href="https://github.com/N2D4/frontend-starter">GitHub repo</SmartLink>
       </Paragraph>
 
       <Paragraph body>

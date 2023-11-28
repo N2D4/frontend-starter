@@ -4,8 +4,10 @@ import { Box, Link, LinkProps } from "@mui/joy";
 import { Icon } from "./icon";
 import { useEffect, useState } from "react";
 
-export function SmartLink(props: LinkProps) {
+export function SmartLink(props: LinkProps & { hideExternalIndicator?: boolean }) {
   const [isExternal, setIsExternal] = useState(!!props.href?.match(/^[a-z]+:/));
+
+  const { hideExternalIndicator, ...linkProps } = props;
 
   useEffect(() => {
     const hrefUrl = new URL(props.href ?? "", window.location.href);
@@ -17,14 +19,14 @@ export function SmartLink(props: LinkProps) {
     <Link
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      endDecorator={isExternal ? (
+      endDecorator={!hideExternalIndicator && isExternal ? (
         <Icon
           icon="open_in_new"
           size="0.8em"
         />
       ) : undefined}
       display="inline"
-      {...props}
+      {...linkProps}
       sx={{
         "&:hover": {
           textDecoration: 'none',
@@ -32,7 +34,7 @@ export function SmartLink(props: LinkProps) {
             textDecoration: 'underline',
           },
         },
-        ...props.sx ?? {},
+        ...linkProps.sx ?? {},
       }}
     >
       <Box component="span" display="inline" className="n2-smart-link-child">

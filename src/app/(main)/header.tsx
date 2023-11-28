@@ -4,6 +4,9 @@ import { Icon } from "@/components/icon";
 import { Logo } from "@/components/logo";
 import { Sheet, Stack, IconButton, Box, SheetProps, useColorScheme, colors, Input, Button } from "@mui/joy";
 import { SiteSearch } from "./site-search";
+import { SmartLink } from "@/components/smart-link";
+import Image from "next/image";
+import GitHubInvertocat from "../../../public/github-invertocat.png";
 
 export function Header(props: SheetProps & {
   isCompactMediaQuery: string,
@@ -51,6 +54,19 @@ export function Header(props: SheetProps & {
         </IconButton>
         <Logo height={36} />
         <Box flexGrow={1} />
+        <SmartLink href="https://github.com/N2D4/frontend-starter" hideExternalIndicator>
+          <Box
+            width={24}
+            height={24}
+            position="relative"
+          >
+            <Image
+              src={GitHubInvertocat}
+              alt="GitHub repository"
+              fill
+            />
+          </Box>
+        </SmartLink>
         <SiteSearch
           size="sm"
           sx={{
