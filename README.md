@@ -8,9 +8,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped from [`N2D4/fronte
 
 ## Getting Started
 
-First, install all dependencies:
+First, download this template either by clicking the green button on the GitHub page, following [this link](https://github.com/new?template_name=frontend-starter&template_owner=N2D4), or executing:
 
 ```sh
+npm init @n2d4/frontend-starter
+```
+
+Once you got a setup locally, install all dependencies:
+
+```sh
+cd the-folder-with-your-project
 npm install
 ```
 
