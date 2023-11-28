@@ -1,6 +1,27 @@
+import { VariousLinksExample } from "./examples";
+
 export const metadata = {
   title: "SmartLink",
 };
 
 
 # {metadata.title}
+
+A component for links that automatically detects whether the link is internal or external and adjusts the `target` and `rel` attributes accordingly, along with rendering a small icon to indicate the link type.
+
+Should be used in most cases over HTML `<a>`, [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link), and Joy UI's [Link](https://mui.com/joy-ui/react-link/) component. (When using `SmartLink` is not an option, go for Joy UI's component over the other two.)
+
+## Props \{#props}
+
+The same as Joy UI's [Link](https://mui.com/joy-ui/react-link/) component.
+
+## Examples \{#examples}
+
+### Various internal and external links \{#various-links}
+
+<VariousLinksExample />
+
+## See also \{#see-also}
+
+- [`next/link`](https://nextjs.org/docs/pages/api-reference/components/link)
+- [Joy UI Link](https://mui.com/joy-ui/react-link/)
