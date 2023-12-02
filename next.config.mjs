@@ -31,6 +31,10 @@ const nextConfig = {
   images: {
     unoptimized: outputStaticSite,
   },
+
+  experimental: {
+    optimizePackageImports: ['@mui/joy'],
+  },
 };
 
 export default withMDX(nextConfig);
