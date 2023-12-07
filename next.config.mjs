@@ -5,11 +5,17 @@ import remarkHeadingId from 'remark-heading-id';
 
 import createMDX from "@next/mdx";
 
+import createBundleAnalyzer from '@next/bundle-analyzer';
+
 const withMDX = createMDX({
   options: {
     rehypePlugins: [rehypeKatex],
     remarkPlugins: [remarkMath, remarkGfm, remarkHeadingId],
   },
+});
+
+const withBundleAnalyzer = createBundleAnalyzer({
+  enabled: !!process.env.ANALYZE_BUNDLE,
 });
 
 // TODO ASAP: set to false if you don't want to export a static site
@@ -37,4 +43,4 @@ const nextConfig = {
   },
 };
 
-export default withMDX(nextConfig);
+export default withBundleAnalyzer(withMDX(nextConfig));

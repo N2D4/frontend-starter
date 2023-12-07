@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@mui/joy";
-import { allMaterialSymbolNames, type MaterialSymbolName } from "./material-symbol-names";
+import { allMaterialSymbolShortStrings, type MaterialSymbolName } from "./material-symbol-names";
 
 type PropsWithoutBase = {
   icon: MaterialSymbolName,
@@ -37,8 +37,8 @@ export const Icon: {
         ...boxProps.sx,
       }}
     >
-      {icon}
+      {allMaterialSymbolShortStrings[icon] ?? icon}
     </Box>
   );
 };
-Icon.allIcons = new Set(allMaterialSymbolNames);
+Icon.allIcons = new Set(Object.keys(allMaterialSymbolShortStrings) as MaterialSymbolName[]);
