@@ -4,7 +4,7 @@ import { CircularProgress, IconButton, IconButtonProps } from "@mui/joy";
 import React from "react";
 
 export function AsyncIconButton(props: Omit<IconButtonProps, 'onClick'> & {
-  onClick?: (...args: Parameters<IconButtonProps['onClick'] & {}>) => Promise<void> | void,
+  onClick?: (...args: Parameters<IconButtonProps['onClick'] & {}>) => Promise<void> | void | any,
   onChangeIsLoading?: (isProcessing: boolean) => void,
 }) {
   const [isLoading, setIsLoading] = React.useState(false);

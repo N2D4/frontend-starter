@@ -36,3 +36,15 @@ export function deepPlainEquals<T>(obj1: T, obj2: unknown): obj2 is T {
   }
   }
 }
+
+export function typedEntries<T extends {}>(obj: T): [keyof T, T[keyof T]][] {
+  return Object.entries(obj) as any;
+}
+
+export function typedKeys<T extends {}>(obj: T): (keyof T)[] {
+  return Object.keys(obj) as any;
+}
+
+export function typedValues<T extends {}>(obj: T): T[keyof T][] {
+  return Object.values(obj) as any;
+}

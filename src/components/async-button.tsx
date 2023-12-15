@@ -4,7 +4,7 @@ import { Button, ButtonProps } from "@mui/joy";
 import React from "react";
 
 export function AsyncButton(props: Omit<ButtonProps, 'onClick'> & {
-  onClick?: (...args: Parameters<ButtonProps['onClick'] & {}>) => Promise<void> | void,
+  onClick?: (...args: Parameters<ButtonProps['onClick'] & {}>) => Promise<void> | void | any,
   onChangeIsLoading?: (isProcessing: boolean) => void,
 }) {
   const [isLoading, setIsLoading] = React.useState(false);

@@ -2,8 +2,8 @@
 
 import { Icon } from "@/components/icon";
 import { Logo } from "@/components/logo";
-import { SheetProps, Sheet, List, listItemButtonClasses, ListItem, Typography, ListItemButton, IconButton, ListSubheader, Stack, Divider, Box } from "@mui/joy";
-import { usePathname, useRouter } from "next/navigation";
+import { SheetProps, Sheet, List, ListItem, Typography, ListItemButton, IconButton, ListSubheader, Stack, Divider, Box, ListItemContent, ListItemDecorator } from "@mui/joy";
+import { usePathname } from "next/navigation";
 import React, { Dispatch, SetStateAction, use, useCallback, useEffect, useMemo, useState } from "react";
 import { SiteSearch } from "./site-search";
 import { SmartLink } from "@/components/smart-link";
@@ -121,27 +121,25 @@ export function Sidebar(props: SheetProps & {
   );
 }
 
-function Subheader(props: { icon: React.ReactNode, children: React.ReactNode }) {
+function Subheader(props: { icon?: React.ReactNode, children: React.ReactNode }) {
   return (
     <ListSubheader sticky sx={{ backdropFilter: 'blur(4px)' }}>
-      <Stack direction="row" alignItems="center" gap={1}>
-        {props.icon}
-        <Box>
-          {props.children}
-        </Box>
-      </Stack>
+      {props.icon && (
+        <ListItemDecorator>{props.icon}</ListItemDecorator>
+      )}
+      <ListItemContent>{props.children}</ListItemContent>
     </ListSubheader>
   );
 }
 
-function NavigationItem(props: { children: React.ReactNode, href: string, onCloseSidebar: () => void }) {
+function NavigationItem(props: { icon?: React.ReactNode, children: React.ReactNode, href: string, onCloseSidebar: () => void, selectIfParent?: boolean }) {
   const pathname = usePathname();
 
   const folder = use(folderContext);
 
   const isLocal = props.href.startsWith("/");
   const pathnameCut = pathname.split("#")[0].split("?")[0];
-  const selected = isLocal && !!pathnameCut && pathnameCut === props.href;
+  const selected = isLocal && !!pathnameCut && (pathnameCut === props.href || (!!props.selectIfParent && pathnameCut.startsWith(props.href.replace(/\/?$/g, "/"))));
 
   const openParentFolders = useCallback(() => {
     let curFolder = folder;
@@ -176,7 +174,10 @@ function NavigationItem(props: { children: React.ReactNode, href: string, onClos
           },
         }}
       >
-        {props.children}
+        {props.icon && (
+          <ListItemDecorator>{props.icon}</ListItemDecorator>
+        )}
+        <ListItemContent>{props.children}</ListItemContent>
       </ListItemButton>
     </ListItem>
   );
